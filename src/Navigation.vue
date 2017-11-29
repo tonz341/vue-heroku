@@ -1,6 +1,12 @@
+<style>
+
+
+</style>
+
+
 <template>
 <div>
-<nav class="navbar navbar-expand-lg navbar-dark indigo">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-color red fixed-top">
     <!-- Navbar brand -->
     <a class="navbar-brand" href="#">Winston Fale</a>
     <!-- Collapse button -->

@@ -1,25 +1,37 @@
+<style scoped>
+#hello {
+  background-image: linear-gradient(rgba(55, 63, 70, 0.8), rgba(55, 63, 70, 0), rgba(55, 63, 70, 0)), url(https://mdbootstrap.com/img/Photos/Others/city7.jpg);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: auto 100%;
+  padding-bottom: 3rem;
+  height: 650px;
+}
+.center-float{
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  margin-top: 35%
+}
+</style>
+
 <template>
-  <div class="hello">
-
-   <button type="button" class="btn btn-primary">Primary</button>
-    <!-- Default button -->
-    <button type="button" class="btn btn-default">Default</button>
-
-    <!-- Secondary button -->
-    <button type="button" class="btn btn-secondary">Secondary</button>
-
-    <!-- Indicates a successful or positive action -->
-    <button type="button" class="btn btn-success">Success</button>
-
-    <!-- Contextual button for informational alert messages -->
-    <button type="button" class="btn btn-info">Info</button>
-
-    <!-- Indicates caution should be taken with this action -->
-    <button type="button" class="btn btn-warning">Warning</button>
-
-    <!-- Indicates a dangerous or potentially negative action -->
-    <button type="button" class="btn btn-danger">Danger</button>
-    
+  <div class="home-template">
+    <div id="hello">
+        <div class="center-float">
+          <button type="button" class="btn btn-primary">Button 1 </button>
+          <!-- Default button -->
+          <button type="button" class="btn btn-default">Button 2</button>
+        </div>
+    </div>
+    <div class="container">
+     <div class="row">
+       <div class="col-lg">
+         
+       </div>
+     </div>
+    </div>
   </div>
 </template>
 
@@ -35,19 +47,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+
