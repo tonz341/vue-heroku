@@ -22,7 +22,8 @@
       <div class="container text-center">
         <div class="row">
           <div class="col-md-12">
-            <a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo" src="/static/img/logo.png"></a>
+            <!-- <a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo" src="/static/img/logo.png"></a> -->
+            <h1>Welcome!</h1>
           </div>
         </div>
         <div class="col-md-12">
