@@ -3,7 +3,7 @@
     <header id="header" class="fixed-top">
     <div class="container">
       <div id="logo" class="pull-left">
-        <router-link to="/"><img src="/static/img/logo-nav.png" alt="" title="" /></img></router-link>
+        <router-link to="/"><img src="/static/img/tonz.png" alt="" title="" /></img></router-link>
         <!-- Uncomment below if you prefer to use a text image -->
         <!--<h1><a href="#hero">Bell</a></h1>-->
       </div>
