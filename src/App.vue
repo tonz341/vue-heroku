@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <navigation-bar></navigation-bar>
-    <div style="margin-top:50px">
-      <router-view/>
-    </div>
+    <header-section></header-section>
+    <router-view/>
+    <footer-section></footer-section>
   </div>
 </template>
 
 <script>
-import NavigationBar from './Navigation'
+import HeaderSection from './Header'
+import FooterSection from './Footer'
 export default {
-  components: { NavigationBar },
+  components: { HeaderSection, FooterSection },
   name: 'app'
 }
 </script>
