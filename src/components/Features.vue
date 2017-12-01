@@ -3,8 +3,10 @@
   <section class="features" id="features">
     <div class="container">
       <h2 class="text-center">
-          Features
+          Features  {{ $store.state.count }}
         </h2>
+        <button @click="increment">Increment</button>
+        <button @click="decrement">Decrement</button>
       <div class="row">
         <div class="feature-col col-lg-4 col-xs-12">
           <div class="card card-block text-center">
@@ -139,6 +141,14 @@ export default {
   data () {
     return {
       msg: 'Coming soon...'
+    }
+  },
+  methods : {
+    increment(){
+      this.$store.commit('increment')
+    },
+    decrement(){
+     this.$store.commit('decrement')
     }
   }
 }

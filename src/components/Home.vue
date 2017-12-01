@@ -23,7 +23,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- <a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo" src="/static/img/logo-s.png"></a> -->
-            <h1>Welcome!</h1>
+            <h1>Welcome! </h1>
           </div>
         </div>
         <div class="col-md-12">
@@ -31,6 +31,7 @@
             A theme with personality <br>
             This is a powerful theme with some great features that you can use in your future projects.
           </p>
+          <p class="tagline">Youre index is {{ $store.state.count }}</p>
           <router-link to="/features"><a class="btn btn-full">View Inside</a></router-link>
         </div>
       </div>
