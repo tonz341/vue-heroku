@@ -143,12 +143,12 @@ export default {
       msg: 'Coming soon...'
     }
   },
-  methods : {
-    increment(){
+  methods: {
+    increment () {
       this.$store.commit('increment')
     },
-    decrement(){
-     this.$store.commit('decrement')
+    decrement () {
+      this.$store.commit('decrement')
     }
   }
 }

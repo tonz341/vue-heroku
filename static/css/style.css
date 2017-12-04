@@ -83,6 +83,12 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 0;
     margin: 0;
     overflow: hidden;
+    height: 100%;
+  }
+
+  .stretch{
+    height: 100%;
+    width: 100%;
   }
   
   a:hover {
@@ -145,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-brand {
     margin-bottom: 75px;
     display: inline-block;
-  }
+  } 
   
   .hero-brand:hover {
     opacity: .75;
@@ -605,6 +611,7 @@ h1, h2, h3, h4, h5, h6 {
   
   .portfolio-grid {
     margin-top: 65px;
+    margin-bottom: 100px;
   }
   
   .portfolio-grid .row {
