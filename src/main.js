@@ -18,6 +18,9 @@ new Vue({
   template: '<App/>',
   components: { App },
   mounted () {
+    window.socket.on('global-chat:send-clients', (message) => {
+      this.$store.commit('INSERT_MESSAGES', message)
+    })
     this.$store.dispatch('API_IMAGES')
     this.$store.dispatch('API_POSTS')
   }

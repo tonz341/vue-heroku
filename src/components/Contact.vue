@@ -63,9 +63,7 @@ export default {
     }
   },
   mounted () {
-    window.socket.on('global-chat:send-clients', (message) => {
-      this.$store.commit('INSERT_MESSAGES', message)
-    })
+
   },
   methods: {
     sendMessage () {
