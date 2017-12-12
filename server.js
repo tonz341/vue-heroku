@@ -5,6 +5,14 @@ var serveStatic = require('serve-static');
 var history = require('connect-history-api-fallback');
 
 app = express();
+
+app.get('*',function(req,res,next){
+    if(req.headers['x-forwarded-proto']!='https')
+      res.redirect('https://mypreferreddomain.com'+req.url)
+    else
+      next() /* Continue to other routes if we're not redirecting */
+  })
+
 app.use(history());
 
 app.use(serveStatic(__dirname + "/dist"));
