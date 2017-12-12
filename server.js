@@ -5,18 +5,10 @@ var serveStatic = require('serve-static');
 var history = require('connect-history-api-fallback');
 
 app = express();
-
-app.get('*',function(req,res,next){
-    if(req.headers['x-forwarded-proto']!='https')
-      res.redirect('https://mypreferreddomain.com'+req.url)
-    else
-      next() /* Continue to other routes if we're not redirecting */
-  })
-
 app.use(history());
 
 app.use(serveStatic(__dirname + "/dist"));
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 81;
 var server = app.listen(port,function(){
     console.log('server started in the '+ port);
 });
