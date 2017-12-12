@@ -8,7 +8,8 @@ export default new Vuex.Store({
     count: 0,
     index: 0,
     items: [],
-    images: []
+    images: [],
+    messages: []
   },
   getters: {
     // ...
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     FETCH_USERS (state, payload) {
       state.items.push(payload)
+    },
+    INSERT_MESSAGES (state, message) {
+      state.messages.unshift(message)
     }
   },
   actions: {

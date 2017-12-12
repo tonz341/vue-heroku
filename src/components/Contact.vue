@@ -5,32 +5,12 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <h2 class="section-title">Contact Us</h2>
-          <p>{{ $store.state.items }}</p>
         </div>
       </div>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-4">
-          <div class="info">
-            <div>
-              <i class="fa fa-map-marker"></i>
-              <p>A108 Adam Street<br>New York, NY 535022</p>
-            </div>
-
-            <div>
-              <i class="fa fa-envelope"></i>
-              <p>info@example.com</p>
-            </div>
-
-            <div>
-              <i class="fa fa-phone"></i>
-              <p>+1 5589 55488 55s</p>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-lg-5 col-md-8">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Email</h4>
           <div class="form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
@@ -55,6 +35,19 @@
             </form>
           </div>
         </div>
+        <div class="col-md-6">
+          <h4>or Leave a message here</h4>
+          <div class="row">
+            <div class="col-md-12">
+                  <textarea rows="5" class="form-control" v-model="message" @keyup.13="sendMessage"></textarea>
+                  <button @click="sendMessage">Send</button>
+                  <hr>
+                  <ul>
+                    <li v-for="message in $store.state.messages" :key="message">Anonymous : {{ message }}</li>
+                  </ul>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -66,7 +59,18 @@ export default {
   name: 'contact',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      message: ''
+    }
+  },
+  mounted () {
+    window.socket.on('global-chat:send-clients', (message) => {
+      this.$store.commit('INSERT_MESSAGES', message)
+    })
+  },
+  methods: {
+    sendMessage () {
+      window.socket.emit('global-chat:send-server', this.message)
+      this.message = ''
     }
   }
 }
@@ -77,15 +81,11 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
+a {
+  color: #42b983;
+}
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
