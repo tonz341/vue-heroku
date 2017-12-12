@@ -8,7 +8,7 @@ app = express();
 app.use(history());
 
 app.use(serveStatic(__dirname + "/dist"));
-var port = 80;
+var port = 81;
 var server = app.listen(port,function(){
     console.log('server started in the '+ port);
 });
