@@ -5,16 +5,7 @@ var serveStatic = require('serve-static');
 var history = require('connect-history-api-fallback');
 
 app = express();
-
-app.get('/data/api',function(req,res,next){
-    const test = [
-        {
-            test: 1,
-            piste: 3
-        }
-    ]
-    res.send(test);
-});
+app.use('/api/user', require('./src/api/user'))
 
 app.use(history());
 app.use(serveStatic(__dirname + "/dist"));

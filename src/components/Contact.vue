@@ -39,7 +39,7 @@
           <h4>or Leave a message here</h4>
           <div class="row">
             <div class="col-md-12">
-                  <textarea rows="5" class="form-control" v-model="message" @keyup.13="sendMessage"></textarea>
+                  <textarea rows="5" class="form-control" v-model="message" @keypress.13.prevent="sendMessage" placeholder="Type your message here"></textarea>
                   <button @click="sendMessage">Send</button>
                   <hr>
                   <ul>
@@ -68,7 +68,7 @@ export default {
   methods: {
     sendMessage () {
       window.socket.emit('global-chat:send-server', this.message)
-      this.message = ''
+      this.message = null
     }
   }
 }
