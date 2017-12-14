@@ -4,12 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import VueResource from 'vue-resource'
 
 Vue.config.productionTip = false
-
-Vue.use(VueResource)
 /* eslint-disable no-new */
+
+window.axios = require('axios')
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 new Vue({
   el: '#app',

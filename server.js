@@ -5,7 +5,7 @@ var serveStatic = require('serve-static');
 var history = require('connect-history-api-fallback');
 
 app = express();
-app.use('/api/user', require('./src/api/user'))
+app.use('/api/images', require('./src/api/images'))
 
 app.use(history());
 app.use(serveStatic(__dirname + "/dist"));
