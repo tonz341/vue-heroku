@@ -43,7 +43,7 @@
                   <button @click="sendMessage">Send</button>
                   <hr>
                   <ul>
-                    <li v-for="message in $store.state.messages" :key="message">Anonymous : {{ message }}</li>
+                    <li v-for="message in $store.state.messages" :key="message._id">Anonymous : {{ message.message }}</li>
                   </ul>
               </div>
           </div>

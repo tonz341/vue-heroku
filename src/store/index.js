@@ -33,8 +33,11 @@ export default new Vuex.Store({
     FETCH_USERS (state, payload) {
       state.items.push(payload)
     },
+    INITIATE_CHATS (state, message) {
+      state.messages = message.reverse()
+    },
     INSERT_MESSAGES (state, message) {
-      state.messages.unshift(message)
+      state.messages.unshift({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': null})
     }
   },
   actions: {
@@ -54,6 +57,15 @@ export default new Vuex.Store({
       window.axios.get('https://jsonplaceholder.typicode.com/posts')
       .then((response) => {
         commit('FETCH_USERS', response.data)
+      })
+      .catch(error => {
+        console.log(error.statusText)
+      })
+    },
+    API_CHATS ({ commit, getters }) {
+      window.axios.get('/api/chats/all')
+      .then((response) => {
+        commit('INITIATE_CHATS', response.data)
       })
       .catch(error => {
         console.log(error.statusText)
