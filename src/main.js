@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueLetterAvatar from 'vue-letter-avatar'
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
@@ -11,6 +12,7 @@ Vue.config.productionTip = false
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
+Vue.use(VueLetterAvatar)
 new Vue({
   el: '#app',
   router,

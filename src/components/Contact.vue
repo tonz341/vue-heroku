@@ -43,8 +43,12 @@
                   <button @click="sendMessage">Send</button>
                   <hr>
                   <ul>
+                    <li class="chat-box">
+                        <vue-letter-avatar name='user' size='30' :rounded='true' />
+                        <strong>User</strong> : test
+                    </li>
                     <li class="chat-box" v-for="message in $store.state.messages" :key="message._id">
-                      <img src="//placehold.it/35" class="rounded-circle" />
+                      <vue-letter-avatar name='user' size='40' :rounded='true' />
                       <strong>User</strong> : {{ message.message }}
                     </li>
                   </ul>
