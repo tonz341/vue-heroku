@@ -13,7 +13,6 @@ MongoClient.connect('mongodb://tonz341:password341@ds137256.mlab.com:37256/tonz3
     db = database
     console.log('database success');
 
-
     app = express();
     app.get('/test/test', (req, res) => {
         db.collection('quotes').save({test:'2' , message:'haha'}, (err, result) => {

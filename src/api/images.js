@@ -12,11 +12,4 @@ router.get('/all', function(req, res) {
     });
 });
 
-router.get('/test', function(req, res) {
-   const artest = [{
-    'piste': 'yawa'
-   }]
-   res.send(artest)
-});
-
 module.exports = router;

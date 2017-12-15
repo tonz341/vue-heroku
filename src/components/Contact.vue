@@ -4,12 +4,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <h2 class="section-title">Contact Us</h2>
+          <!-- <h2 class="section-title">Contact Us</h2> -->
         </div>
       </div>
 
+      <br>
+
       <div class="row">
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <h4>Email</h4>
           <div class="form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
@@ -34,9 +36,9 @@
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
-        </div>
+        </div> -->
         <div class="col-md-6">
-          <h4>or Leave a message here</h4>
+          <h4>Chatbox (Leave a message here)</h4>
           <div class="row">
             <div class="col-md-12">
                   <textarea rows="5" class="form-control" v-model="message" @keypress.13.prevent="sendMessage" placeholder="Type your message here"></textarea>

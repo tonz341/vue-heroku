@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header-section></header-section>
-    <br>
     <router-view/>
     <footer-section></footer-section>
   </div>

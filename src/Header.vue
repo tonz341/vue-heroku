@@ -1,36 +1,46 @@
 <template>
-  <div>
     <header id="header" class="fixed-top">
-    <div class="container">
-      <div id="logo" class="pull-left">
-        <router-link to="/"><img src="/static/img/tonz.png" alt="" title="" /></img></router-link>
-        <!-- Uncomment below if you prefer to use a text image -->
-        <!--<h1><a href="#hero">Bell</a></h1>-->
-      </div>
-
-      <nav id="nav-menu-container fixed-top">
-        <ul class="nav-menu">
-          <li><router-link to="/about-us">About Us</router-link></li>
-          <li><router-link to="/features">Features</router-link></li>
-          <li><router-link to="/portfolio">Portfolio</router-link></li>
-          <li><router-link to="/team">Team</router-link></li>
-          <li> <router-link to="/contact-us">Contact Us</router-link></li>
-        </ul>
+      <nav class="navbar navbar-expand-sm">
+        <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Logo</a>
+        <!-- Links -->
+          <div class="collapse navbar-collapse justify-content-end" id="nav-content">   
+            <ul class="navbar-nav">
+              <li class="nav-item">
+              <router-link to="/"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Home</a></router-link>
+              </li>
+            <li class="nav-item">
+              <router-link to="/about-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">About Us</a></router-link>
+              </li>
+              <li class="nav-item">
+              <router-link to="/features"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Features</a></router-link>
+              </li>
+              <li class="nav-item">
+              <router-link to="/portfolio"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Portfolio</a></router-link>
+              </li>
+              <li class="nav-item">
+              <router-link to="/team"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Team</a></router-link>
+              </li>
+              <li class="nav-item">
+              <router-link to="/contact-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact Us</a></router-link>
+              </li>
+            </ul>
+        </div>
+        </div>
       </nav>
-      <nav class="nav social-nav pull-right d-none d-lg-inline">
-        <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-envelope"></i></a>
-      </nav>
-    </div>
   </header>
-  </div>
 </template>
-
 <script>
 export default {
   name: 'header',
   data () {
     return {message: 'awe'
     }
-  }
+  },
+  mounted () { }
 }
 </script>

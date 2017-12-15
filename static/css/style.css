@@ -169,7 +169,9 @@ h1, h2, h3, h4, h5, h6 {
   ================================================== */
   #header {
     background:black;
-    height: 70px;
+  }
+  #header a {
+    color: white
   }
   
   #header #logo {
