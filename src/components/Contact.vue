@@ -43,11 +43,10 @@
                   <button @click="sendMessage">Send</button>
                   <hr>
                   <ul>
-                    <li class="chat-box">
-                       <img src="//placehold.it/35" class="rounded-circle" />
-                       User: message.message
+                    <li class="chat-box" v-for="message in $store.state.messages" :key="message._id">
+                      <img src="//placehold.it/35" class="rounded-circle" />
+                      User : {{ message.message }}
                     </li>
-                    <li v-for="message in $store.state.messages" :key="message._id">Anonymous : {{ message.message }}</li>
                   </ul>
               </div>
           </div>
