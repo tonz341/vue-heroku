@@ -6,7 +6,7 @@
         <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
+         <router-link to="/"><a class="navbar-brand">Heroku Express</a></router-link>
         <!-- Links -->
           <div class="collapse navbar-collapse justify-content-end" id="nav-content">   
             <ul class="navbar-nav">
@@ -38,7 +38,7 @@
 export default {
   name: 'header',
   data () {
-    return {message: 'awe'
+    return { message: 'awe'
     }
   },
   mounted () { }

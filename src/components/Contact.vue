@@ -7,10 +7,8 @@
           <!-- <h2 class="section-title">Contact Us</h2> -->
         </div>
       </div>
-
       <br>
-
-      <div class="row">
+      <div class="row"> 
         <!-- <div class="col-md-6">
           <h4>Email</h4>
           <div class="form">
@@ -45,6 +43,10 @@
                   <button @click="sendMessage">Send</button>
                   <hr>
                   <ul>
+                    <li class="chat-box">
+                       <img src="//placehold.it/35" class="rounded-circle" />
+                       User: message.message
+                    </li>
                     <li v-for="message in $store.state.messages" :key="message._id">Anonymous : {{ message.message }}</li>
                   </ul>
               </div>
@@ -87,5 +89,10 @@ a {
 ul {
   list-style-type: none;
   padding: 0;
+}
+.chat-box {
+    background: lightsteelblue;
+    border-radius: 7px;
+    padding: 5px;
 }
 </style>

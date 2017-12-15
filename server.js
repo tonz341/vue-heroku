@@ -25,7 +25,7 @@ MongoClient.connect('mongodb://tonz341:password341@ds137256.mlab.com:37256/tonz3
     })
     
     app.get('/api/chats/all', (req, res) => {
-       db.collection('chats').find().toArray(function(err, results) {
+       db.collection('chats').find().limit(10).toArray(function(err, results) {
             res.json(results)
         })
     })
