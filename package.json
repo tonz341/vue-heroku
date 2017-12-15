@@ -70,6 +70,7 @@
     "vue": "^2.5.2",
     "vue-axios": "^2.0.2",
     "vue-jest": "^1.0.2",
+    "vue-letter-avatar": "^0.1.4",
     "vue-loader": "^13.3.0",
     "vue-resource": "^1.3.4",
     "vue-router": "^3.0.1",
