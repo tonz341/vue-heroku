@@ -45,7 +45,7 @@
                   <ul>
                     <li class="chat-box" v-for="message in $store.state.messages" :key="message._id">
                       <img src="//placehold.it/35" class="rounded-circle" />
-                      User : {{ message.message }}
+                      <strong>User</strong> : {{ message.message }}
                     </li>
                   </ul>
               </div>
@@ -93,5 +93,6 @@ ul {
     background: lightsteelblue;
     border-radius: 7px;
     padding: 5px;
+    margin: 5px
 }
 </style>
