@@ -1,6 +1,6 @@
 <template>
     <header id="header" class="fixed-top">
-      <nav class="navbar navbar-expand-sm">
+      <nav class="navbar navbar-expand-sm" style="background-color:black">
         <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>

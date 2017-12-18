@@ -25,10 +25,15 @@ MongoClient.connect('mongodb://tonz341:password341@ds137256.mlab.com:37256/tonz3
     })
     
     app.get('/api/chats/all', (req, res) => {
-       db.collection('chats').find().toArray(function(err, results) {
+       db.collection('chats').find().sort({_id:-1}).limit(10).toArray(function(err, results) {
+
             res.json(results)
         })
     })
+
+    app.get('/api/user/store', (req, res) => {
+        db.collection('users').save({email: 'winston@engageiq.com', firstname: 'winston', lastname: 'fale', status: 1, role: 'admin'}, (err, result) => {})
+     })
     
     app.use('/api/images', require('./src/api/images'))
     app.use(history());

@@ -1,3 +1,37 @@
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+a {
+  color: #42b983;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+.chat-message {
+    background: lightsteelblue;
+    border-radius: 7px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.chat-box {
+    min-height: 100px;
+    padding: 5px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.chat-date {
+    font-size: 8px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    margin-left: 43px;
+}
+</style>
+
 <template>
   <div>
     <section id="contact">
@@ -39,16 +73,30 @@
           <h4>Chatbox (Leave a message here)</h4>
           <div class="row">
             <div class="col-md-12">
-                  <textarea rows="5" class="form-control" v-model="message" @keypress.13.prevent="sendMessage" placeholder="Type your message here"></textarea>
-                  <button @click="sendMessage">Send</button>
-                  <hr>
-                  <ul>
-                    <li class="chat-box" v-for="message in $store.state.messages" :key="message._id">
-                      <vue-letter-avatar name='user' size='25' :rounded='true' />
+              <div class="row">
+                <div class="col-md-12">
+                <ul class="chat-box" id="chat-box">
+                  <li v-for="message in myMessages" :key="message._id" style="margin-bottom: 5px;">
+                    <vue-letter-avatar name='user' size='35' :rounded='true' />
+                    <span class="chat-message">
                       <strong>User</strong> : {{ message.message }}
-                    </li>
-                  </ul>
+                    </span>
+                    <p class="chat-date">{{ convertTimestampFromId(message._id) }}</p>
+                  </li>
+                </ul>
+                </div>
               </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Type your message here" aria-label="Type your message here" v-model="message" @keypress.13.prevent="sendMessage">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button" @click="sendMessage"><i class="fa fa-send"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -58,6 +106,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'contact',
   data () {
@@ -65,34 +115,29 @@ export default {
       message: ''
     }
   },
-  mounted () {
-
+  computed: {
+    ...mapGetters({
+      myMessages: 'getMessages'
+    })
   },
   methods: {
     sendMessage () {
       window.socket.emit('global-chat:send-server', this.message)
       this.message = null
+    },
+    convertTimestampFromId (id) {
+      let date = new Date(parseInt(id.toString().substring(0, 8), 16) * 1000)
+      return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US')
+    }
+  },
+  watch: {
+    myMessages () {
+      this.$nextTick(function () {
+        let objDiv = document.getElementById('chat-box')
+        objDiv.scrollTop = objDiv.scrollHeight
+      })
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-a {
-  color: #42b983;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-.chat-box {
-    background: lightsteelblue;
-    border-radius: 7px;
-    padding: 5px;
-    margin: 5px
-}
-</style>

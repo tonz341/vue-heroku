@@ -15,7 +15,8 @@ export default new Vuex.Store({
     // ...
     imagesLength: (state, getters) => {
       return state.images.length
-    }
+    },
+    getMessages: state => state.messages
   },
   mutations: {
     increment (state) {
@@ -37,7 +38,7 @@ export default new Vuex.Store({
       state.messages = message.reverse()
     },
     INSERT_MESSAGES (state, message) {
-      state.messages.unshift({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': null})
+      state.messages.push({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': null})
     }
   },
   actions: {
