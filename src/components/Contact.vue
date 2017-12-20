@@ -99,6 +99,20 @@ ul {
             </div>
           </div>
         </div>
+
+         <div class="col-md-6">
+           <div class="form-group">
+             <form @submit.prevent="login">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="email" class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="password" class="form-control">
+
+                <button type="submit" class="btn btn-success">Login</button>
+             </form>
+           </div>
+         </div>
+
       </div>
     </div>
   </section>
@@ -128,6 +142,9 @@ export default {
     convertTimestampFromId (id) {
       let date = new Date(parseInt(id.toString().substring(0, 8), 16) * 1000)
       return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US')
+    },
+    login (e) {
+      console.log($(e.target).serializeArray())
     }
   },
   watch: {
