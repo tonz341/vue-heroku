@@ -9,14 +9,16 @@ export default new Vuex.Store({
     index: 0,
     items: [],
     images: [],
-    messages: []
+    messages: [],
+    user: []
   },
   getters: {
     // ...
     imagesLength: (state, getters) => {
       return state.images.length
     },
-    getMessages: state => state.messages
+    getMessages: state => state.messages,
+    getUser: state => state.user
   },
   mutations: {
     increment (state) {
@@ -38,10 +40,22 @@ export default new Vuex.Store({
       state.messages = message.reverse()
     },
     INSERT_MESSAGES (state, message) {
-      state.messages.push({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': null})
+      state.messages.push({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': new Date()})
+    },
+    ASSIGN_USER (state, user) {
+      state.user = user
     }
   },
   actions: {
+    isAuthenticated ({ commit }) {
+      window.axios.get('/authenticated/user')
+      .then((response) => {
+        commit('ASSIGN_USER', response.data.user)
+      })
+      .catch(error => {
+        console.log(error.statusText)
+      })
+    },
     insertImage ({ commit, getters }, payload) {
       commit('INSERT_IMAGE', {id: getters.imagesLength + 1, src: payload.src, title: '2nd pic', definition: 'Lorem ipsam'})
     },

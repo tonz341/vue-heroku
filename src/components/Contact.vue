@@ -102,13 +102,15 @@ ul {
 
          <div class="col-md-6">
            <div class="form-group">
-             <form @submit.prevent="login">
+             <form action="/admin/login" @submit.prevent="login">
                 <label for="email">Email</label>
                 <input type="text" name="email" placeholder="email" class="form-control">
                 <label for="password">Password</label>
                 <input type="password" name="password" placeholder="password" class="form-control">
 
                 <button type="submit" class="btn btn-success">Login</button>
+               
+               {{ currentUser }}
              </form>
            </div>
          </div>
@@ -131,8 +133,16 @@ export default {
   },
   computed: {
     ...mapGetters({
-      myMessages: 'getMessages'
+      myMessages: 'getMessages',
+      currentUser: 'getUser'
     })
+  },
+  mounted () {
+    this.$store.dispatch('API_CHATS')
+
+    window.socket.on('global-chat:send-clients', (message) => {
+      this.$store.commit('INSERT_MESSAGES', message)
+    }) // listener from server
   },
   methods: {
     sendMessage () {
@@ -144,7 +154,20 @@ export default {
       return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US')
     },
     login (e) {
-      console.log($(e.target).serializeArray())
+      window.axios.post(window.$(e.target).attr('action'), window.$(e.target).serialize())
+      .then((response) => {
+        if (response.data.code === 200) {
+          this.$store.commit('ASSIGN_USER', response.data.user)
+          this.$router.push('/')
+          // window.location.replace('/admin/dashboard')
+        }
+        else {
+          alert('Invalid Credentials')
+        }
+      })
+      .catch(error => {
+        console.log(error.statusText)
+      })
     }
   },
   watch: {

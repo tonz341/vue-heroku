@@ -5,9 +5,17 @@ import App from './App'
 import router from './router'
 import store from './store'
 import VueLetterAvatar from 'vue-letter-avatar'
+import io from 'socket.io-client'
 
 Vue.config.productionTip = false
+
 /* eslint-disable no-new */
+
+window.$ = window.jQuery = require('jquery')
+window.Popper = require('./assets/js/popper.min.js')
+require('./assets/js/bootstrap.min.js')
+
+window.socket = io.connect()
 
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
@@ -20,10 +28,7 @@ new Vue({
   template: '<App/>',
   components: { App },
   mounted () {
-    window.socket.on('global-chat:send-clients', (message) => {
-      this.$store.commit('INSERT_MESSAGES', message)
-    })
-    this.$store.dispatch('API_CHATS')
+    this.$store.dispatch('isAuthenticated')
     this.$store.dispatch('API_IMAGES')
     this.$store.dispatch('API_POSTS')
   }

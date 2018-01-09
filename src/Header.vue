@@ -28,6 +28,9 @@
               <li class="nav-item">
               <router-link to="/contact-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact Us</a></router-link>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Hi {{ currentUser.firstname ? currentUser.firstname : 'Guest' }}</a>
+              </li>
             </ul>
         </div>
         </div>
@@ -35,11 +38,18 @@
   </header>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'header',
   data () {
     return { message: 'awe'
     }
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: 'getUser'
+    })
   },
   mounted () { }
 }
