@@ -101,18 +101,7 @@ ul {
         </div>
 
          <div class="col-md-6">
-           <div class="form-group">
-             <form action="/admin/login" @submit.prevent="login">
-                <label for="email">Email</label>
-                <input type="text" name="email" placeholder="email" class="form-control">
-                <label for="password">Password</label>
-                <input type="password" name="password" placeholder="password" class="form-control">
-
-                <button type="submit" class="btn btn-success">Login</button>
-               
-               {{ currentUser }}
-             </form>
-           </div>
+           
          </div>
 
       </div>
@@ -152,22 +141,6 @@ export default {
     convertTimestampFromId (id) {
       let date = new Date(parseInt(id.toString().substring(0, 8), 16) * 1000)
       return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US')
-    },
-    login (e) {
-      window.axios.post(window.$(e.target).attr('action'), window.$(e.target).serialize())
-      .then((response) => {
-        if (response.data.code === 200) {
-          this.$store.commit('ASSIGN_USER', response.data.user)
-          this.$router.push('/')
-          // window.location.replace('/admin/dashboard')
-        }
-        else {
-          alert('Invalid Credentials')
-        }
-      })
-      .catch(error => {
-        console.log(error.statusText)
-      })
     }
   },
   watch: {

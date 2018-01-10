@@ -13,7 +13,7 @@
               <li class="nav-item">
               <router-link to="/"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Home</a></router-link>
               </li>
-            <li class="nav-item">
+              <li class="nav-item">
               <router-link to="/about-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">About Us</a></router-link>
               </li>
               <li class="nav-item">
@@ -29,7 +29,46 @@
               <router-link to="/contact-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact Us</a></router-link>
               </li>
               <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Hi {{ currentUser.firstname ? currentUser.firstname : 'Guest' }}</a>
+              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"></a>
+              </li>
+
+              <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="!currentUser">
+                <a class="nav-link" @click="showLogin=!showLogin" > 
+                  Login
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview" :class="{ 'display-div' : showLogin }" @mouseover="showLogin=true" @mouseleave="showLogin=false" >
+                  <form action="/admin/login" @submit.prevent="login">
+                    <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="email" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
+                  </form>
+                </div>
+              </li>
+
+                <!-- <li class="nav-item dropdown">
+                <a class="nav-link" @click="showLogin=!showLogin" > 
+                  Login
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview" :class="{ 'display-div' : showLogin }">
+                  <div class="form-group">
+                    <form action="/admin/login" @submit.prevent="login">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" placeholder="email" class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="password" class="form-control">
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </form>
+                  </div>
+                </div>
+              </li> -->
+
+               <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="currentUser">
+                <a class="nav-link dropdown-toggle" @click="showLogin=!showLogin" > 
+                   {{ currentUser.firstname ? 'Hi ' + currentUser.firstname : 'Login' }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview" :class="{ 'display-div' : showLogin }" @mouseover="showLogin=true" @mouseleave="showLogin=false" >
+                   <a class="dropdown-item" href="/admin/logout">Logout</a>
+                </div>
               </li>
             </ul>
         </div>
@@ -37,13 +76,21 @@
       </nav>
   </header>
 </template>
+<style>
+ 
+.display-div {
+  display: inline;
+}
+
+</style>
+
 <script>
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'header',
   data () {
-    return { message: 'awe'
+    return { showLogin: false
     }
   },
   computed: {
@@ -51,6 +98,26 @@ export default {
       currentUser: 'getUser'
     })
   },
-  mounted () { }
+  mounted () { 
+
+  },
+  methods : {
+  login (e) {
+        window.axios.post(window.$(e.target).attr('action'), window.$(e.target).serialize())
+        .then((response) => {
+          if (response.data.code === 200) {
+            this.$store.commit('ASSIGN_USER', response.data.user)
+            this.$router.push('/')
+            // window.location.replace('/admin/dashboard')
+          }
+          else {
+            alert('Invalid Credentials')
+          }
+        })
+        .catch(error => {
+          console.log(error.statusText)
+        })
+      }
+  }
 }
 </script>
