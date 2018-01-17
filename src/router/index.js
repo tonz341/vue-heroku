@@ -6,6 +6,7 @@ import Contact from '@/components/Contact'
 import About from '@/components/About'
 import Portfolio from '@/components/Portfolio'
 import Team from '@/components/Team'
+import Notes from '@/components/Notes'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/contact-us',
       name: 'contact',
       component: Contact
+    },
+    {
+      path: '/notes',
+      name: 'notes',
+      component: Notes
     }
   ]
 })

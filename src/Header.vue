@@ -19,8 +19,11 @@
               <li class="nav-item">
               <router-link to="/features"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Features</a></router-link>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
               <router-link to="/portfolio"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Portfolio</a></router-link>
+              </li> -->
+                   <li class="nav-item">
+              <router-link to="/notes"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Notes</a></router-link>
               </li>
               <li class="nav-item">
               <router-link to="/team"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Team</a></router-link>
