@@ -24,7 +24,17 @@ db.once('open', function() {
       datetime: String
     });
 
+    var noteSchema = mongoose.Schema({
+        user_id: Number,
+        category_id: String,
+        label: String,
+        description: String
+    });
+  
+
     var Chat = mongoose.model('Chat', chatSchema); // database table
+    var Notes = mongoose.model('Notes', noteSchema); // database table
+
     app = express();
 
     app.use(session({
@@ -68,7 +78,6 @@ db.once('open', function() {
     var User = mongoose.model('User', userSchema); // database table
 
     app.post('/admin/login', (req, res) => {
-
         if(req.body.email && req.body.password){
             var email = req.body.email;
             var password = req.body.password;
@@ -93,6 +102,27 @@ db.once('open', function() {
         })
     })
 
+    app.get('/admin/notes', (req, res) => {
+        Notes.find().sort({_id:-1}).limit(10).exec(function(err, results){
+            res.json(results)
+        })
+    })
+
+    app.post('/admin/notes/create', (req, res) => {
+        var category_id = req.body.category_id;
+        var label = req.body.label;
+        var description = req.body.description;
+
+        var notes = new Notes({
+            user_id: null , 
+            category_id: category_id, 
+            label: label,
+            description: description
+        });
+        notes.save();
+        res.json({ message: 'success', code: 200})
+    })
+
     app.get('/admin/logout', (req, res) => {
         req.session.destroy();
         res.redirect('/');
@@ -103,9 +133,6 @@ db.once('open', function() {
         if(!req.session.user) {
             res.redirect('/');
         }
-
-        console.log(req.sessionID)
-        console.log(req.session.user)
         res.json({ haha: 'secret'})
     })
 
