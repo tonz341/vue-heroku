@@ -116,7 +116,7 @@ db.once('open', function() {
         var notes = new Notes({
             user_id: null , 
             category_id: category_id, 
-            label: label,
+            label: label.charAt(0).toUpperCase() + label.slice(1),
             description: description
         });
         notes.save();

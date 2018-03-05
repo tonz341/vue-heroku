@@ -26,9 +26,10 @@
           </div>
 
            <div class="col-md-8">
-             <div class="form-group row">
-                <strong class="col-md-2">Notes</strong>
-                <input class="col-md-3 offset-7" type="text" placeholder="Search keywords">
+             <div class="form-group">
+                Notes
+                <br>
+                <input class="" type="text" placeholder="Search keywords" v-model="searchWord" @keyup="searchKeyword">
              </div>
           
             <!-- <div class="note-div">
@@ -55,6 +56,7 @@
     padding: 5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    margin-bottom: 40px;
   }
 
   .note-inner {
@@ -70,6 +72,7 @@ export default {
   data () {
     return {
       notes : [],
+      notesBackup : [],
       note : {
         category_id: null,
         description: null,
@@ -82,7 +85,8 @@ export default {
         {id: 4, name: 'Nginx'},
         {id: 5, name: 'Mysql'},
         {id: 6, name: 'Linux'},
-      ]
+      ],
+      searchWord: null
     }
   },
   mounted() {
@@ -93,6 +97,7 @@ export default {
       window.axios.get('/admin/notes')
         .then((response) => {
           this.notes = response.data
+          this.notesBackup = response.data
         })
         .catch(error => {
           console.log(error.statusText)
@@ -104,7 +109,7 @@ export default {
           this.notes.unshift ({
             category_id: this.note.category_id,
             description: this.note.description,
-            label: this.note.label,
+            label: this.note.label.charAt(0).toUpperCase() + this.note.label.slice(1),
             user_id: null 
           })
           this.resetFields();
@@ -126,6 +131,24 @@ export default {
         }
       }
       return 'Unknown'
+    },
+
+    searchKeyword() {
+      
+       if(this.searchWord.length < 1) {
+         this.notes = this.notesBackup
+         return true;
+       }
+
+        this.getResult('label', this.searchWord.charAt(0).toUpperCase() + this.searchWord.slice(1))
+    },
+
+    getResult(keyToFilter, valueStartsWith) {
+      let result =  _.filter(this.notes, (d) => { return d[keyToFilter].startsWith(valueStartsWith); })
+
+      if(result.length > 0) {
+        this.notes = result
+      } 
     }
   },
   filters: {
