@@ -42,15 +42,16 @@
 
               <div style="padding: 5px">
                 <h5> {{ categoryFilter(note.category_id)  }} - {{ note.label }} 
-                  <span class="pull-right">
-                    <button @click="updateId=index" :disabled="!currentUser" type="button" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></button>
-                    <button @click="deleteNote(index,note._id)" :disabled="!currentUser" type="button" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
+                  <span class="pull-right" v-if="currentUser">
+                    <button @click="updateId=index" type="button" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></button>
+                    <button @click="deleteNote(index,note._id)" type="button" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
                   </span>
                 </h5>
+                <input type="text" v-model="note.label" v-if="updateId==index">
               </div>
 
               <pre v-if="updateId!=index" class=" card-body note-inner">{{ note.description }}</pre>
-              <textarea v-if="updateId==index" name="" class="form-control" v-model="note.description"></textarea>
+              <textarea v-if="updateId==index" class="form-control" v-model="note.description" rows="50" style="min-height: 250px"></textarea>
 
               <div v-if="updateId==index" class="text-center"> 
                 <button type="button" class="btn btn-warning" @click="updateId=null">Cancel</button>

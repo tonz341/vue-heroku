@@ -6,7 +6,7 @@
         <i class="fa fa-bars" aria-hidden="true" style="color:white"></i>
         </button>
         <!-- Brand -->
-         <router-link to="/"><a class="navbar-brand">Heroku Express</a></router-link>
+         <router-link to="/"><a class="navbar-brand">Winston Fale</a></router-link>
         <!-- Links -->
           <div class="collapse navbar-collapse justify-content-end" id="nav-content">   
             <ul class="navbar-nav">
