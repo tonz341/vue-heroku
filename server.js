@@ -120,7 +120,39 @@ db.once('open', function() {
             description: description
         });
         notes.save();
-        res.json({ message: 'success', code: 200})
+        res.json({ message: 'success', code: 200, notes: notes})
+    })
+
+    app.patch('/admin/notes/update', (req, res) => {
+
+        Notes.findById(req.body._id, function(err, query) {
+            if (!query)
+                res.json({ message: 'Document not found', code: 404 })
+            else {
+              // do your updates here
+              query.description = req.body.description
+              query.category_id = req.body.category_id
+              query.label = req.body.label
+          
+              query.save(function(err) {
+                if (err)
+                    res.json({ message: 'error', code: 500 })
+                else
+                    res.json({ message: 'success', code: 200, notes: query})
+              });
+            }
+        });
+    })
+
+    app.post('/admin/notes/delete', (req, res) => {
+        Notes.remove({ _id: req.body.id }, function(err) {
+            if (!err) {
+                res.json({ message: 'success', code: 200 })
+            }
+            else {
+                res.json({ message: 'error', code: 500 })
+            }
+        });
     })
 
     app.get('/admin/logout', (req, res) => {
