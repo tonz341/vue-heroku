@@ -8,16 +8,16 @@
               <div class="form-group">
                   <label for="category_id">Select Category</label>
                   <select name="category_id" class="form-control" v-model="note.category_id">
-                    <option :value="category.id" v-for="category in categories">{{ category.name }}</option>
+                    <option :value="category.id" v-for="category in categories" :disabled="!currentUser">{{ category.name }}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="form_note">Label </label>
-                  <input type="text" class="" name="label"  required v-model="note.label">
+                  <input type="text" class="" name="label"  required v-model="note.label" :disabled="!currentUser">
                 </div>
                 <div class="form-group">
                   <label for="form_note">Notes </label>
-                  <textarea class="form-control" name="description" rows="50" required v-model="note.description" style="min-height: 250px"></textarea>
+                  <textarea class="form-control" name="description" rows="50" required v-model="note.description" style="min-height: 250px" :disabled="!currentUser"></textarea>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-default" type="submit" :disabled="!currentUser">Save</button>
@@ -109,6 +109,8 @@ export default {
         {id: 5, name: 'Mysql'},
         {id: 6, name: 'Linux'},
         {id: 7, name: 'Node Express'},
+        {id: 8, name: 'Php'},
+        {id: 9, name: 'Git'}
       ],
       searchWord: null
     }
