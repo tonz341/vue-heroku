@@ -38,21 +38,25 @@
 
             <div class="note-outer" v-for="(note,index) in notes" :key="index">
 
-
               <div style="padding: 5px">
                 <h5> {{ categoryFilter(note.category_id)  }} - {{ note.label }} 
                   <span class="pull-right" v-if="currentUser">
-                    <button @click="updateId=index" type="button" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></button>
-                    <button @click="deleteNote(index,note._id)" type="button" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></button>
+                    <button @click="updateId=index" type="button" class="btn btn-xs btn-success" :disabled="updateId==index"><i class="fa fa-pencil"></i></button>
+                    <button @click="deleteNote(index,note._id)" type="button" class="btn btn-xs btn-danger" :disabled="updateId==index"><i class="fa fa-times"></i></button>
                   </span>
                 </h5>
-                <input type="text" v-model="note.label" v-if="updateId==index">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input type="text" class="form-control" v-model="note.label" v-if="updateId==index">
+                  </div>
+                </div>
               </div>
 
               <pre v-if="updateId!=index" class=" card-body note-inner">{{ note.description }}</pre>
               <textarea v-if="updateId==index" class="form-control" v-model="note.description" rows="15"></textarea>
 
-              <div v-if="updateId==index" class="text-center"> 
+              <div v-if="updateId==index" class="text-center">
+                <br> 
                 <button type="button" class="btn btn-warning" @click="updateId=null">Cancel</button>
                 <button type="button" class="btn btn-primary" @click="updateNotes(index)">Update</button>
               </div>
@@ -75,7 +79,10 @@
   }
 
   .note-inner {
-    background-color: lavender
+    background-color: #e6e6fa;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 4px;
   }
 
   .text-center {

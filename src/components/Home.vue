@@ -23,16 +23,17 @@
         <div class="row">
           <div class="col-md-12">
             <!-- <a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo" src="/static/img/logo-s.png"></a> -->
-            <h1>Welcome! </h1>
+            <h1 style="color:antiquewhite">Welcome visitor! </h1>
           </div>
         </div>
         <div class="col-md-12">
-          <p class="tagline">
-            A theme with personality <br>
-            This is a powerful theme with some great features that you can use in your future projects.
+          <p class="tagline" style="color:antiquewhite"><br>
+           Every great developer you know got there by solving problems <br> they were unqualified to solve until they actually did it. <br />
+           <br>
+           by Patrick McKenzie
           </p>
-          <p class="tagline">Youre index is {{ $store.state.count }}</p>
-          <router-link to="/features"><a class="btn btn-full">View Inside</a></router-link>
+          <br>
+          <br>
         </div>
       </div>
     </section>

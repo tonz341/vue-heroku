@@ -35,13 +35,24 @@
               <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"></a>
               </li>
 
-              <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="!currentUser">
+              <!-- <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="!currentUser">
                 <a class="nav-link" @click="showLogin=!showLogin" > 
                   Login
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview" :class="{ 'display-div' : showLogin }" @mouseover="showLogin=true" @mouseleave="showLogin=false" >
                   <form action="/admin/login" @submit.prevent="login">
                     <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="email" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
+                  </form>
+                </div>
+              </li> -->
+
+              <li class="nav-item dropdown" v-if="!currentUser">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01" style="min-width: 17rem;">
+                  <form action="/admin/login" @submit.prevent="login">
+                    <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="Email address" class="form-control"></a>
                     <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
                     <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
                   </form>
@@ -65,14 +76,26 @@
                 </div>
               </li> -->
 
-               <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="currentUser">
+              <li class="nav-item dropdown" v-if="currentUser">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi Winston</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01" style="min-width: 17rem;">
+                  <a class="dropdown-item" href="/admin/logout">Logout</a>
+                  <!-- <form action="/admin/login" @submit.prevent="login">
+                    <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="email" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
+                    <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
+                  </form> -->
+                </div>
+              </li>
+
+               <!-- <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="currentUser">
                 <a class="nav-link dropdown-toggle" @click="showLogin=!showLogin" > 
                    {{ currentUser.firstname ? 'Hi ' + currentUser.firstname : 'Login' }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview" :class="{ 'display-div' : showLogin }" @mouseover="showLogin=true" @mouseleave="showLogin=false" >
                    <a class="dropdown-item" href="/admin/logout">Logout</a>
                 </div>
-              </li>
+              </li> -->
             </ul>
         </div>
         </div>
@@ -83,6 +106,10 @@
  
 .display-div {
   display: inline;
+}
+
+.dropdown-menu > a {
+  color: black !important
 }
 
 </style>
