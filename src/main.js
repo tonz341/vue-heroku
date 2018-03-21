@@ -14,8 +14,11 @@ Vue.config.productionTip = false
 window._= require('lodash');
 
 window.$ = window.jQuery = require('jquery')
+
 window.Popper = require('./assets/js/popper.min.js')
 require('./assets/js/bootstrap.min.js')
+
+require('./assets/js/jquery-ui.js')
 
 window.socket = io.connect()
 

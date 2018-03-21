@@ -13,11 +13,11 @@
                 </div>
                 <div class="form-group">
                   <label for="form_note">Label </label>
-                  <input type="text" class="" name="label"  required v-model="note.label" :disabled="!currentUser">
+                  <input type="text" class="form-control" name="label"  required v-model="note.label" :disabled="!currentUser">
                 </div>
                 <div class="form-group">
                   <label for="form_note">Notes </label>
-                  <textarea class="form-control" name="description" rows="50" required v-model="note.description" style="min-height: 250px" :disabled="!currentUser"></textarea>
+                  <textarea class="form-control" name="description" rows="15" required v-model="note.description"  :disabled="!currentUser"></textarea>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-default" type="submit" :disabled="!currentUser">Save</button>
@@ -27,9 +27,8 @@
 
            <div class="col-md-8">
              <div class="form-group">
-                Notes {{ updateId }}
-                <br>
-                <input class="" type="text" placeholder="Search keywords" v-model="searchWord" @keyup="searchKeyword">
+                <label>Notes: </label>
+                <input id="tags" class="form-control" type="text" placeholder="Search keywords" v-model="searchWord" @keyup="searchKeyword">
              </div>
           
             <!-- <div class="note-div">
@@ -51,7 +50,7 @@
               </div>
 
               <pre v-if="updateId!=index" class=" card-body note-inner">{{ note.description }}</pre>
-              <textarea v-if="updateId==index" class="form-control" v-model="note.description" rows="50" style="min-height: 250px"></textarea>
+              <textarea v-if="updateId==index" class="form-control" v-model="note.description" rows="15"></textarea>
 
               <div v-if="updateId==index" class="text-center"> 
                 <button type="button" class="btn btn-warning" @click="updateId=null">Cancel</button>
@@ -122,6 +121,7 @@ export default {
   },
   mounted() {
     this.fetchNotes();
+    this.autocomplete();
   },
   methods: {
     fetchNotes() {
@@ -172,10 +172,11 @@ export default {
          return true;
        }
 
-        this.getResult('label', this.searchWord.charAt(0).toUpperCase() + this.searchWord.slice(1))
+        // this.getResult('label', this.searchWord.charAt(0).toUpperCase() + this.searchWord.slice(1))
     },
 
     getResult(keyToFilter, valueStartsWith) {
+      console.log('trigger',valueStartsWith);
       let result =  _.filter(this.notes, (d) => { return d[keyToFilter].startsWith(valueStartsWith); })
 
       if(result.length > 0) {
@@ -206,6 +207,28 @@ export default {
         .catch(error => {
           console.log(error.statusText)
           alert("Something went wrong")
+        })
+    },
+    autocomplete(){
+
+      let self = this;
+      window.axios.get('/admin/notes/autocomplete')
+       .then((response) => {
+            console.log(self.searchKeyword);
+            $( "#tags" ).autocomplete({
+              source: response.data,
+              select: function(event, ui) {
+                self.notes = self.notesBackup
+                self.getResult('label', ui.item.value)
+              },
+              keyup: function(){
+                console.log('test')
+              }
+            });
+       })
+        .catch(error => {
+          console.log(error.statusText)
+          alert("Something went wrong Autocomplete")
         })
     }
   },

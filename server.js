@@ -103,8 +103,17 @@ db.once('open', function() {
     })
 
     app.get('/admin/notes', (req, res) => {
-        Notes.find().sort({_id:-1}).limit(10).exec(function(err, results){
+        Notes.find().sort({_id:-1}).exec(function(err, results){
             res.json(results)
+        })
+    })
+
+    app.get('/admin/notes/autocomplete', (req, res) => {
+        Notes.find().sort({_id:-1}).select('label -_id').exec(function(err, results){
+            var set = results.map(function(item) {
+                return item['label'];
+            });
+          res.json(set)
         })
     })
 
