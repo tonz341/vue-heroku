@@ -1,17 +1,42 @@
+<style scoped>
+img{
+  width: 100%
+}
+p {
+  font-weight: 900
+}
+</style>
+
 <template>
 <div>
   <section class="about" id="about">
-    <div class="container text-center">
+    <div class="container">
       <h2>
-          About Bell Theme
+          About
         </h2>
 
+        <div class="row">
+          <div class="col-md-3">
+            <img src="" alt="">
+          </div>
+          <div class="col-md-9">
+              <p>Name: Mark Zuckenburg</p>
+              <p>Age: 26 yrs old</p>
+              <p>Position: Facebook CEP</p>
+              <p>Company: Fishbook</p>
+              <p>Skills: Cook, Laundy, Sleep</p>
+          </div>
+        </div>
+
+        <hr>
+
+<!-- 
       <p>
         Voluptua scripserit per ad, laudem viderer sit ex. Ex alia corrumpit voluptatibus usu, sed unum convenire id. Ut cum nisl moderatius, per nihil dicant commodo an. Eum tacimates erroribus ad. Atqui feugiat euripidis ea pri, sed veniam tacimates ex. Menandri
         temporibus an duo.
-      </p>
+      </p> -->
 
-      <div class="row stats-row">
+      <!-- <div class="row stats-row">
         <div class="stats-col text-center col-md-3 col-sm-6">
           <div class="circle">
             <span class="stats-no" data-toggle="counter-up">232</span> Satisfied Customers
@@ -35,7 +60,7 @@
             <span class="stats-no" data-toggle="counter-up">15</span> Hard Workers
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </div>

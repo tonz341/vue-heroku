@@ -8,7 +8,7 @@
               <div class="form-group">
                   <label for="category_id">Select Category</label>
                   <select name="category_id" class="form-control" v-model="note.category_id">
-                    <option :value="category.id" v-for="category in categories" :disabled="!currentUser">{{ category.name }}</option>
+                    <option :value="category.name" v-for="category in categories" :disabled="!currentUser">{{ category.name }}</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -39,15 +39,15 @@
             <div class="note-outer" v-for="(note,index) in notes" :key="index">
 
               <div style="padding: 5px">
-                <h5> {{ categoryFilter(note.category_id)  }} - {{ note.label }} 
+                <h5> {{ note.category_id }} - {{ note.label }} 
                   <span class="pull-right" v-if="currentUser">
                     <button @click="updateId=index" type="button" class="btn btn-xs btn-success" :disabled="updateId==index"><i class="fa fa-pencil"></i></button>
                     <button @click="deleteNote(index,note._id)" type="button" class="btn btn-xs btn-danger" :disabled="updateId==index"><i class="fa fa-times"></i></button>
                   </span>
                 </h5>
                 <div class="row">
-                  <div class="col-md-4">
-                    <input type="text" class="form-control" v-model="note.label" v-if="updateId==index">
+                  <div class="col-md-5">
+                    <input type="text" class="form-control" v-model="note.label" v-if="updateId==index" style="margin-left: -5px;">
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
               <textarea v-if="updateId==index" class="form-control" v-model="note.description" rows="15"></textarea>
 
               <div v-if="updateId==index" class="text-center">
-                <br> 
+                <div style="margin-top: 10px;"></div>
                 <button type="button" class="btn btn-warning" @click="updateId=null">Cancel</button>
                 <button type="button" class="btn btn-primary" @click="updateNotes(index)">Update</button>
               </div>
@@ -182,13 +182,16 @@ export default {
         // this.getResult('label', this.searchWord.charAt(0).toUpperCase() + this.searchWord.slice(1))
     },
 
-    getResult(keyToFilter, valueStartsWith) {
-      console.log('trigger',valueStartsWith);
-      let result =  _.filter(this.notes, (d) => { return d[keyToFilter].startsWith(valueStartsWith); })
-
-      if(result.length > 0) {
-        this.notes = result
-      } 
+    getResult(id) {
+        window.axios.get('/admin/note/'+id)
+        .then((response) => {
+            this.notes = [];
+            this.notes.push(response.data.note)
+        })
+        .catch(error => {
+          console.log(error.statusText)
+          alert("Something went wrong")
+        })
     },
 
     updateNotes(index) {
@@ -226,7 +229,8 @@ export default {
               source: response.data,
               select: function(event, ui) {
                 self.notes = self.notesBackup
-                self.getResult('label', ui.item.value)
+                self.searchWord = ui.item.label
+                self.getResult(ui.item.value)
               },
               keyup: function(){
                 console.log('test')

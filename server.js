@@ -103,19 +103,24 @@ db.once('open', function() {
     })
 
     app.get('/admin/notes', (req, res) => {
-        Notes.find().sort({_id:-1}).exec(function(err, results){
+        Notes.find().sort({_id:-1}).limit(5).exec(function(err, results){
             res.json(results)
         })
     })
 
     app.get('/admin/notes/autocomplete', (req, res) => {
-        Notes.find().sort({_id:-1}).select('label -_id').exec(function(err, results){
+        Notes.find().sort({_id:-1}).select('label category_id _id').exec(function(err, results){
             var set = results.map(function(item) {
-                return item['label'];
+                return {value: item['_id'], label: item['category_id'] +" - "+ item['label']};
             });
           res.json(set)
         })
     })
+
+    app.get('/admin/migrate', (req, res) => {
+        res.json('haha')
+    })
+
 
     app.post('/admin/notes/create', (req, res) => {
         var category_id = req.body.category_id;
@@ -162,6 +167,17 @@ db.once('open', function() {
                 res.json({ message: 'error', code: 500 })
             }
         });
+    })
+
+    app.get('/admin/note/:id', (req, res) => {
+        Notes.findById(req.params.id, function(err, query) { 
+            if (!err) {
+                res.json({ note: query, code: 200 })
+            }
+            else {
+                res.json({ note: [],  code: 404 })
+            }
+        })
     })
 
     app.get('/admin/logout', (req, res) => {
