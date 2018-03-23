@@ -48,14 +48,19 @@
                 </div>
               </li> -->
 
-              <li class="nav-item dropdown" v-if="!currentUser">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+              <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ currentUser ? 'Hi ' + currentUser.firstname : 'Login' }}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01" style="min-width: 17rem;">
-                  <form action="/admin/login" @submit.prevent="login">
-                    <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="Email address" class="form-control"></a>
-                    <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
-                    <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
-                  </form>
+                  <div v-if="!currentUser">
+                    <form action="/admin/login" @submit.prevent="login">
+                      <a class="dropdown-item" href="#"><input tabindex="1" type="text" name="email" placeholder="Email address" class="form-control"></a>
+                      <a class="dropdown-item" href="#"><input tabindex="2" type="password" name="password" placeholder="password" class="form-control"></a>
+                      <a class="dropdown-item" href="#"><button tabindex="3" type="submit" class="btn btn-success">Login</button></a>
+                    </form>
+                  </div>
+                  <div v-else>
+                    <a class="dropdown-item" href="/admin/logout">Logout</a>
+                  </div>
                 </div>
               </li>
 
@@ -76,18 +81,7 @@
                 </div>
               </li> -->
 
-              <li class="nav-item dropdown" v-if="currentUser">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi Winston</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01" style="min-width: 17rem;">
-                  <a class="dropdown-item" href="/admin/logout">Logout</a>
-                  <!-- <form action="/admin/login" @submit.prevent="login">
-                    <a class="dropdown-item" href="#"><input type="text" name="email" placeholder="email" class="form-control"></a>
-                    <a class="dropdown-item" href="#"><input type="password" name="password" placeholder="password" class="form-control"></a>
-                    <a class="dropdown-item" href="#"><button type="submit" class="btn btn-success">Login</button></a>
-                  </form> -->
-                </div>
-              </li>
-
+      
                <!-- <li class="nav-item dropdown" @mouseleave="showLogin=false" v-if="currentUser">
                 <a class="nav-link dropdown-toggle" @click="showLogin=!showLogin" > 
                    {{ currentUser.firstname ? 'Hi ' + currentUser.firstname : 'Login' }}
@@ -108,7 +102,7 @@
   display: inline;
 }
 
-.dropdown-menu > a {
+.dropdown-item {
   color: black !important
 }
 
