@@ -52,7 +52,7 @@
 
   @media only screen and (max-width: 544px) {
     .feedback-box {
-      bottom: 57%;
+      bottom: 10px;
       width: 100%;
     }
 }

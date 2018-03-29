@@ -23,8 +23,7 @@ img{
 
 
           <div class="col-md-9">
-              <p><strong>Name:</strong> Mark Zuckenburg</p>
-              <p><strong>Age:</strong> 26 yrs old</p>
+              <p><strong>Name:</strong> Winston James Dale Fale</p>
               <p><strong>Current:</strong> EngageIQ Logic</p>
               <p><strong>Position:</strong> Web Developer</p>
               <p><strong>Technology used:</strong> Laravel, Css, Sass, Php, Mysql, Git, Npm, Javascript, VueJS, VueRouter, Vuex, Jquery, JqueryUI, JSON, Google API  </p>
