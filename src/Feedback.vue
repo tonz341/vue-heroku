@@ -16,7 +16,7 @@
   font-size: 21px;
   position: fixed;
   right: -40px;
-  top: 76%;
+  top: 30%;
   font-family: "Roboto", helvetica, arial, sans-serif;
   z-index: 999;
   }
@@ -36,23 +36,30 @@
     /* -moz-transform: rotate(-90deg); */
     /* text-align: justify; */
     position: fixed;
-    right: 40px;
-    top: 40%;
+    right: 0px;
+    top: 24%;
     font-family: "Roboto", helvetica, arial, sans-serif;
     z-index: 999;
     padding: 5px;
     font-size: 14px;
   }
 
+  .close-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
 </style>
 
 <template>
 <div>
- <button class="feedback-button" @click="showChat=!showChat">Message</button>
+ <button class="feedback-button" @click="showChat=true">Message</button>
 
   <div class="feedback-box" v-show="showChat">
     <div class="col-xs-12">
-    <chat></chat>
+      <button class="btn btn-xs btn-danger pull-right close-button" @click="showChat=false"><i class="fa fa-times"></i></button>
+      <chat></chat>
     </div>
   </div>
 </div>

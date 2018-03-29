@@ -60,6 +60,7 @@ ul {
 <template>
     <div id="chat">
           <h4>Leave a message </h4>
+          <br>
           <div class="row">
             <div class="col-md-12">
                 <ul class="chat-box" id="chat-box">
