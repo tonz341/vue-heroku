@@ -41,8 +41,8 @@
               <div style="padding: 5px">
                 <h5> {{ note.category_id }} - {{ note.label }} 
                   <span class="pull-right" v-if="currentUser">
-                    <button @click="updateId=index" type="button" class="btn btn-xs btn-success" :disabled="updateId==index"><i class="fa fa-pencil"></i></button>
-                    <button @click="deleteNote(index,note._id)" type="button" class="btn btn-xs btn-danger" :disabled="updateId==index"><i class="fa fa-times"></i></button>
+                    <button @click="updateId=index" type="button" class="btn btn-sm btn-success" :disabled="updateId==index"><i class="fa fa-pencil"></i></button>
+                    <button @click="deleteNote(index,note._id)" type="button" class="btn btn-sm btn-danger" :disabled="updateId==index"><i class="fa fa-times"></i></button>
                   </span>
                 </h5>
                 <div class="row">

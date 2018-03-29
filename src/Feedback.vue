@@ -22,7 +22,7 @@
   }
 
   .feedback-box {
-    height: 400px;
+    height: 440px;
     border: solid 1px #596d5c;
     border-radius: 5px;
     background: whitesmoke;
@@ -37,7 +37,7 @@
     /* text-align: justify; */
     position: fixed;
     right: 0px;
-    top: 24%;
+    bottom: 0;
     font-family: "Roboto", helvetica, arial, sans-serif;
     z-index: 999;
     padding: 5px;
@@ -54,11 +54,11 @@
 
 <template>
 <div>
- <button class="feedback-button" @click="showChat=true">Message</button>
+ <button class="feedback-button" @click="showChat=!showChat">Message</button>
 
   <div class="feedback-box" v-show="showChat">
     <div class="col-xs-12">
-      <button class="btn btn-xs btn-danger pull-right close-button" @click="showChat=false"><i class="fa fa-times"></i></button>
+      <button class="btn btn-sm btn-danger pull-right close-button" @click="showChat=false"><i class="fa fa-times"></i></button>
       <chat></chat>
     </div>
   </div>
