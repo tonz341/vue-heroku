@@ -14,11 +14,11 @@
               <router-link to="/"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Home</a></router-link>
               </li>
               <li class="nav-item">
-              <router-link to="/about-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">About Us</a></router-link>
+              <router-link to="/about-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">About</a></router-link>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
               <router-link to="/features"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Features</a></router-link>
-              </li>
+              </li> -->
               <!-- <li class="nav-item">
               <router-link to="/portfolio"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Portfolio</a></router-link>
               </li> -->
@@ -29,7 +29,7 @@
               <router-link to="/team"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Team</a></router-link>
               </li>
               <li class="nav-item">
-              <router-link to="/contact-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact Us</a></router-link>
+              <router-link to="/contact-us"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact</a></router-link>
               </li>
               <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"></a>

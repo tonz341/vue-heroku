@@ -1,20 +1,18 @@
 <template>
 <section>
   <div class="container">
-    <div class="row">
-      <div class="col-xs-4 offset-8">
-        <!-- <chat></chat> -->
-      </div>
-    </div>
+    <h1>
+      <select name="" id="">
+        <option value="haha">haha</option>
+      </select>
+    </h1>
   </div>
 </section>
 </template>
 
 <script>
-// import Chat from './_partials/Chat'
 export default {
   name: 'contact',
-  // components : { Chat },
   data () {
     return {
       

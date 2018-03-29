@@ -30,8 +30,23 @@ db.once('open', function() {
         label: String,
         description: String
     });
-  
+    
+    var userSchema = mongoose.Schema({
+        email: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        lastname: String,
+        firstname: String
+    });
 
+    var User = mongoose.model('User', userSchema); // database table
     var Chat = mongoose.model('Chat', chatSchema); // database table
     var Notes = mongoose.model('Notes', noteSchema); // database table
 
@@ -60,22 +75,7 @@ db.once('open', function() {
     })
 
     // auth here
-    var userSchema = mongoose.Schema({
-        email: {
-            type: String,
-            unique: true,
-            required: true,
-            trim: true
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-        lastname: String,
-        firstname: String
-    });
 
-    var User = mongoose.model('User', userSchema); // database table
 
     app.post('/admin/login', (req, res) => {
         if(req.body.email && req.body.password){

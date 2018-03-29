@@ -8,14 +8,16 @@
     <br>
     <router-view/>
     <footer-section></footer-section>
+    <Feedback></Feedback>
   </div>
 </template>
 
 <script>
 import HeaderSection from './Header'
 import FooterSection from './Footer'
+import Feedback from './Feedback'
 export default {
-  components: { HeaderSection, FooterSection },
+  components: { HeaderSection, FooterSection, Feedback },
   name: 'app'
 }
 </script>

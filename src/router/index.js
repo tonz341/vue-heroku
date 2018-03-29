@@ -8,6 +8,8 @@ import Portfolio from '@/components/Portfolio'
 import Team from '@/components/Team'
 import Notes from '@/components/Notes'
 
+
+
 Vue.use(Router)
 
 export default new Router({

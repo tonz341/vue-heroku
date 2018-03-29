@@ -1,8 +1,10 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1, h2, h4 {
   font-weight: normal;
+  color: black
 }
+
 a {
   color: #42b983;
 }
@@ -19,9 +21,9 @@ ul {
 }
 
 .chat-box {
-    min-height: 100px;
+    min-height: 150px;
     padding: 5px;
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: scroll;
 }
 
@@ -56,8 +58,8 @@ ul {
 </style>
 
 <template>
-    <section id="chat">
-          <h4>Chatbox </h4>
+    <div id="chat">
+          <h4>Leave a message </h4>
           <div class="row">
             <div class="col-md-12">
                 <ul class="chat-box" id="chat-box">
@@ -80,7 +82,7 @@ ul {
               </div>
           </div>
         </div>
-  </section>
+  </div>
 </template>
 
 <script>

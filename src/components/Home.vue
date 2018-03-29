@@ -38,11 +38,16 @@
       </div>
     </section>
   </div>
+
+
 </template>
 
 <script>
+import Test from './_test/Test'
+
 export default {
   name: 'Home',
+  components : { Test },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
