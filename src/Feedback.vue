@@ -50,6 +50,13 @@
     top: 0px;
   }
 
+  @media only screen and (max-width: 544px) {
+    .feedback-box {
+      bottom: 57%;
+      width: 100%;
+    }
+}
+
 </style>
 
 <template>
