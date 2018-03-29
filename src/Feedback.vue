@@ -32,12 +32,12 @@
     /* font-weight: 700; */
     /* color: white; */
     /* transform: rotate(-90deg); */
-    -ms-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
+    /* -ms-transform: rotate(-90deg); */
+    /* -moz-transform: rotate(-90deg); */
     /* text-align: justify; */
     position: fixed;
     right: 40px;
-    top: 48%;
+    top: 40%;
     font-family: "Roboto", helvetica, arial, sans-serif;
     z-index: 999;
     padding: 5px;
