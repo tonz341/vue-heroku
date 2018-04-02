@@ -46,13 +46,13 @@
 
   .close-button {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 3px;
+    top: 3px;
   }
 
   @media only screen and (max-width: 544px) {
     .feedback-box {
-      bottom: 10px;
+      /* bottom: 10px; */
       width: 100%;
     }
 }

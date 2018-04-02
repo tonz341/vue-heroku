@@ -21,7 +21,7 @@ ul {
 }
 
 .chat-box {
-    min-height: 150px;
+    min-height: 300px;
     padding: 5px;
     max-height: 300px;
     overflow-y: scroll;
@@ -60,7 +60,6 @@ ul {
 <template>
     <div id="chat">
           <h4>Leave a message </h4>
-          <br>
           <div class="row">
             <div class="col-md-12">
                 <ul class="chat-box" id="chat-box">

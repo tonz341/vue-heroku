@@ -3,7 +3,7 @@
     <section class="notes">
     <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 hidden-sm-down">
             <form @submit.prevent="saveNote">
               <div class="form-group">
                   <label for="category_id">Select Category</label>
@@ -25,7 +25,7 @@
             </form>
           </div>
 
-           <div class="col-md-8">
+          <div class="col-md-8 col-sm-12">
              <div class="form-group">
                 <label>Notes: </label>
                 <input id="tags" class="form-control" type="text" placeholder="Search keywords" v-model="searchWord" @keyup="searchKeyword">

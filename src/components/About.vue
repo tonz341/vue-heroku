@@ -18,7 +18,7 @@ img{
         <div class="row">
      
           <div class="col-md-2">
-            <img src="" alt="">
+            <img src="https://www.onlinejobs.ph/jobseekers_pictures/Capture77.PNG" alt="">
           </div>
 
 
@@ -27,6 +27,7 @@ img{
               <p><strong>Current:</strong> EngageIQ Logic</p>
               <p><strong>Position:</strong> Web Developer</p>
               <p><strong>Technology used:</strong> Laravel, Css, Sass, Php, Mysql, Git, Npm, Javascript, VueJS, VueRouter, Vuex, Jquery, JqueryUI, JSON, Google API  </p>
+              <p><strong>Links: </strong><a href="https://www.onlinejobs.ph/jobseekers/info/214411">See me @ www.onlinejobs.ph</a></p>
           </div>
 
     
