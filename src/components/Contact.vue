@@ -2,8 +2,8 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 offset-8">
-        <!-- <chat></chat> -->
+      <div class="col-md-12 col-xs-12">
+        <my-map></my-map>
       </div>
     </div>
   </div>
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-// import Chat from './_partials/Chat'
+import MyMap from './_partials/Map'
 export default {
   name: 'contact',
-  // components : { Chat },
-  data () {
+  components : { MyMap },
+  data () { 
     return {
       
     }

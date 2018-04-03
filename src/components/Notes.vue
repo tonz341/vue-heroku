@@ -116,7 +116,8 @@ export default {
         {id: 6, name: 'Linux'},
         {id: 7, name: 'Node Express'},
         {id: 8, name: 'Php'},
-        {id: 9, name: 'Git'}
+        {id: 9, name: 'Git'},
+        {id: 10, name: 'Google Api'}
       ],
       searchWord: null
     }
