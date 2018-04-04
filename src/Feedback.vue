@@ -3,7 +3,7 @@
   height: 40px;
   border: solid 1px #CCCCCC;
   border-radius: 5px;
-  background: #2a674e;
+  background: #0060b5;
   width: 120px;
   line-height: 32px;
   -webkit-transform: rotate(-90deg);
@@ -54,6 +54,15 @@
     .feedback-box {
       /* bottom: 10px; */
       width: 100%;
+    }
+
+    .feedback-button {
+      height: 28px;
+      right: -35px;
+      top: 30%;
+      font-size: 13px;
+      width: 100px;
+      font-weight: 600;
     }
 }
 

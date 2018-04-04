@@ -30,6 +30,12 @@ db.once('open', function() {
         label: String,
         description: String
     });
+
+    var mapSchema = mongoose.Schema({
+        formatted_address: String,
+        lat: String,
+        lng: String
+    });
     
     var userSchema = mongoose.Schema({
         email: {
@@ -49,6 +55,7 @@ db.once('open', function() {
     var User = mongoose.model('User', userSchema); // database table
     var Chat = mongoose.model('Chat', chatSchema); // database table
     var Notes = mongoose.model('Notes', noteSchema); // database table
+    var Maps = mongoose.model('Maps', mapSchema); // database table
 
     app = express();
 
@@ -100,6 +107,27 @@ db.once('open', function() {
             })
           }
         })
+    })
+
+    app.get('/admin/maps', (req, res) => {
+        Maps.find().sort({_id:-1}).limit(5).exec(function(err, results){
+            res.json(results)
+        })
+    })
+
+    app.post('/admin/maps/create', (req, res) => {
+        var formatted_address = req.body.formatted_address;
+        var lat = req.body.lat;
+        var lng = req.body.lng;
+
+        var maps = new Maps({
+            formatted_address: formatted_address, 
+            lat: lat,
+            lng: lng
+        });
+        maps.save();
+
+        res.json({ message: 'success', code: 200, maps: maps})
     })
 
     app.get('/admin/notes', (req, res) => {
