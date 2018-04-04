@@ -75,12 +75,12 @@
       <h3>Map Test Api <small>- {{ geoLocationSupported ? 'Geolocation supported' : 'Geolocation not-supported' }}</small></h3> 
       <div style="margin-bottom:2px">
          <label>{{ coords.formatted_address }}</label> <br>
-         <input type="text" v-model="coords.lat" readonly>
-         <input type="text" v-model="coords.lng" readonly>
+         <input type="hidden" v-model="coords.lat" readonly>
+         <input type="hidden" v-model="coords.lng" readonly>
       </div>
       <div style="margin-bottom:2px">
         <button @click="getMyLocation" class="btn btn-success btn-sm" :disabled="!geoLocationSupported"><i class="fa fa-map-pin"></i> Find me</button>
-        <button @click="saveLocation" class="btn btn-primary btn-sm" :disabled="!coords.lat || !coords.lng || !coords.formatted_address"><i class="fa fa-save"></i> Save location</button>
+        <button @click="saveLocation" class="btn btn-primary btn-sm" :disabled="!coords.lat || !coords.lng || !coords.formatted_address" v-if="currentUser"><i class="fa fa-save"></i> Save location</button>
         <button @click="start" class="btn btn-warning btn-sm pull-right"><i class="fa fa-refresh"></i> Reload</button>
       </div>
      </div>
@@ -93,6 +93,8 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'map',
@@ -114,7 +116,10 @@ export default {
                return true;
            }
            return false;
-      }
+      },
+       ...mapGetters({
+      currentUser: 'getUser'
+    })
   },
   mounted () {
     //  this.getMyLocation();

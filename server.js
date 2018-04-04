@@ -110,7 +110,7 @@ db.once('open', function() {
     })
 
     app.get('/admin/maps', (req, res) => {
-        Maps.find().sort({_id:-1}).limit(5).exec(function(err, results){
+        Maps.find().sort({_id:-1}).exec(function(err, results){
             res.json(results)
         })
     })
