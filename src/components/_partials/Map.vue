@@ -84,19 +84,30 @@
         <div style="margin-bottom:2px">
             <button @click="getMyLocation" class="btn btn-success btn-sm" :disabled="!geoLocationSupported"><i class="fa fa-map-pin"></i> Find me</button>
             <button @click="saveLocation" class="btn btn-primary btn-sm" :disabled="!coords.lat || !coords.lng || !coords.formatted_address" v-if="currentUser"><i class="fa fa-save"></i> Save location</button>
-            <button @click="distance.active=true">Calculate Distance</button>
+            <button @click="distance.active=true" class="btn btn-inverse btn-sm"> <i class="fa fa-road"></i> Measure Distance</button>
         </div>
       </div>
 
 
     <div v-if="distance.active" style="margin-bottom:2px">
-        <button class="btn btn-sm btn-cancel" @click="distance.active=false">Back</button>
-        <input type="text" v-model="distance.lat1" readonly>
-        <input type="text" v-model="distance.lng1" readonly>
-        <input type="text" v-model="distance.lat2" readonly>
-        <input type="text" v-model="distance.lng2" readonly>
-        <button class="btn btn-sm btn-success" @click="calculateDistance">Calculate</button>
-        <span>{{ distance.distance }}</span>
+        <!-- <input type="hidden" v-model="distance.lat1" readonly>
+        <input type="hidden" v-model="distance.lng1" readonly>
+        <input type="hidden" v-model="distance.lat2" readonly>
+        <input type="hidden" v-model="distance.lng2" readonly> -->
+
+        <p style="color:green"><strong> Note: </strong> Choose your <strong style="color:darkviolet; text-decoration: underline">{{ distance.lng1==null ? 'start' : 'end' }}</strong> location</p>
+
+        <p><button @click="resetDistance(1)" class="btn btn-sm" title="remove location 1" :disabled="distance.lng1==null"><i class="fa fa-minus"></i></button> {{ distance.formatted_address1 }} </p>
+        <p><button @click="resetDistance(2)" class="btn btn-sm" title="remove location 2" :disabled="distance.lng2==null"><i class="fa fa-minus"></i></button> {{ distance.formatted_address2 }} </p>
+
+        <div v-if="distance.data.distance && distance.data.duration">
+            <span> <strong>Distance: </strong> {{ distance.data.distance.text }}</span> <br>
+            <span> <strong>ETA Travel via Car: </strong> {{ distance.data.duration.text }}</span>
+        </div>
+        
+        <button class="btn btn-sm btn-success" @click="calculateDistance" :disabled="distance.lng1==null && distance.lng2==null">Calculate Distance</button>
+        <button class="btn btn-sm btn-cancel" @click="backDistance">Back</button>
+
     </div>
 
      </div>
@@ -128,9 +139,11 @@ export default {
           counter: 1,
           lat1 : null,
           lng1 : null,
+          formatted_address1: null,
           lat2 : null,
           lng2 : null,
-          distance : 0
+          formatted_address2: null,
+          data : []
       }
     }
   },
@@ -153,8 +166,7 @@ export default {
   methods: {
     start() {
         this.init();
-        this.searchArea();
-        this.myPins();
+        
     },
     myPins() {
     window.axios.get('/admin/maps')
@@ -183,11 +195,14 @@ export default {
             self.coords.lng = response.coords.longitude;
 
         let position = { lat: response.coords.latitude, lng: response.coords.longitude };
+
+        self.map.setCenter(position);
         new google.maps.Marker({
             position: position,
             map: self.map,
             title: 'Your current location!',
             animation: google.maps.Animation.DROP,
+            icon: 'http://maps.google.com/mapfiles/kml/pal3/icon32.png'
         });  
 
        var geocoder = new google.maps.Geocoder;
@@ -216,6 +231,7 @@ export default {
             zoom: 8,
             center: position,
             // mapTypeId: google.maps.MapTypeId.HYBRID,
+            mapTypeId: 'roadmap',
             mapTypeControlOptions: {
               style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
               position: google.maps.ControlPosition.TOP_RIGHT
@@ -231,6 +247,9 @@ export default {
             animation: google.maps.Animation.DROP,
             icon: 'http://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png'
         });  
+
+        this.searchArea();
+        this.myPins();
     },
 
     searchArea() {
@@ -256,30 +275,46 @@ export default {
                 let lng = parseFloat(places[0].geometry.location.lng());
 
                 if(this.distance.active == true ) {
-                    if(this.distance.counter == 1) {
+                    if(this.distance.lat1 == null) {
                         this.distance.lat1 = lat;
                         this.distance.lng1 = lng;
+                        this.distance.formatted_address1 = formatted_address;
                         $('#pac-input').val('');
                         this.distance.counter = 2;
+
+                        new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            map: this.map,
+                            icon: 'http://maps.google.com/mapfiles/kml/pal2/icon13.png'
+                        });
+                        
                     } else {
                         this.distance.lat2 = lat;
                         this.distance.lng2 = lng;
+                        this.distance.formatted_address2 = formatted_address;
                         $('#pac-input').val('');
+
+                        new google.maps.Marker({
+                            position: { lat: lat, lng: lng },
+                            map: this.map,
+                            icon: 'http://maps.google.com/mapfiles/kml/pal2/icon13.png'
+                        });
                     }
                 }
                 else {
                     this.coords.formatted_address = formatted_address;
                     this.coords.lat = lat;
                     this.coords.lng = lng;
+
+                    new google.maps.Marker({
+                        position: { lat: lat, lng: lng },
+                        map: this.map,
+                        icon: 'https://www.google.com/mapfiles/arrow.png'
+                    });
                 }
-                
                 this.map.setCenter({ lat: lat , lng: lng });
 
-                new google.maps.Marker({
-                    position: { lat: lat, lng: lng },
-                    map: this.map,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
-                });
+    
             }.bind(this)
         );
     },
@@ -318,17 +353,41 @@ export default {
         let request = {
             origin: new google.maps.LatLng(this.distance.lat1, this.distance.lng1),
             destination: new google.maps.LatLng(this.distance.lat2, this.distance.lng2),
-            travelMode: google.maps.DirectionsTravelMode.DRIVING
+            travelMode: google.maps.DirectionsTravelMode.DRIVING,
         };
 
         let directionsService = new google.maps.DirectionsService();
         directionsDisplay.setMap(this.map);
 
         directionsService.route(request, function (response, status) {
-            this.distance.distance = response.routes[0].legs[0].distance.text
+            if(status=='OK') {
+                directionsDisplay.setDirections(response);
+                this.distance.data = response.routes[0].legs[0]
+                return true;
+            }
+            alert('Invalid destinations')
+            this.resetDistance(1)
+            this.resetDistance(2)
             console.log(response)
         }.bind(this));
 
+    },
+
+    resetDistance(part) {
+        if(part==1) {
+            this.distance.lat1 = null;
+            this.distance.lng1 = null;
+            this.distance.formatted_address1 = null;
+        } else {
+            this.distance.lat2 = null;
+            this.distance.lng2 = null;
+            this.distance.formatted_address2 = null;
+        }
+    },
+
+    backDistance() {
+        this.distance.active=false
+        this.init
     },
 
     waypoints() {
@@ -347,7 +406,7 @@ export default {
         request = {
             origin: start,
             destination: end,
-            travelMode: google.maps.DirectionsTravelMode.WALKING
+            travelMode: google.maps.DirectionsTravelMode.WALKING,
         };
 
         directionsService.route(request, function (response, status) {
