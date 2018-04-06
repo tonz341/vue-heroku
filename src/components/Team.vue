@@ -1,7 +1,6 @@
 <template>
-  <div>
     <section class="team" id="team">
-    <div class="container">
+    <!-- <div class="container">
       <h2 class="text-center">
           Meet our team
         </h2>
@@ -103,9 +102,8 @@
     </div>
     </div>
     </div>
-    </div>
+    </div> -->
   </section>
-  </div>
 </template>
 
 <script>

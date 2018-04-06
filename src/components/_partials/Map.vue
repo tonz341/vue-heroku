@@ -73,16 +73,32 @@
     <div class="row">
      <div class="col-md-12">
       <h3>Map Test Api <small>- {{ geoLocationSupported ? 'Geolocation supported' : 'Geolocation not-supported' }}</small></h3> 
-      <div style="margin-bottom:2px">
-         <label>{{ coords.formatted_address }}</label> <br>
-         <input type="hidden" v-model="coords.lat" readonly>
-         <input type="hidden" v-model="coords.lng" readonly>
+      
+      <div v-if="!distance.active">
+        <div style="margin-bottom:2px">
+            <label>{{ coords.formatted_address }}</label> <br>
+            <input type="hidden" v-model="coords.lat" readonly>
+            <input type="hidden" v-model="coords.lng" readonly>
+        </div>
+
+        <div style="margin-bottom:2px">
+            <button @click="getMyLocation" class="btn btn-success btn-sm" :disabled="!geoLocationSupported"><i class="fa fa-map-pin"></i> Find me</button>
+            <button @click="saveLocation" class="btn btn-primary btn-sm" :disabled="!coords.lat || !coords.lng || !coords.formatted_address" v-if="currentUser"><i class="fa fa-save"></i> Save location</button>
+            <button @click="distance.active=true">Calculate Distance</button>
+        </div>
       </div>
-      <div style="margin-bottom:2px">
-        <button @click="getMyLocation" class="btn btn-success btn-sm" :disabled="!geoLocationSupported"><i class="fa fa-map-pin"></i> Find me</button>
-        <button @click="saveLocation" class="btn btn-primary btn-sm" :disabled="!coords.lat || !coords.lng || !coords.formatted_address" v-if="currentUser"><i class="fa fa-save"></i> Save location</button>
-        <button @click="start" class="btn btn-warning btn-sm pull-right"><i class="fa fa-refresh"></i> Reload</button>
-      </div>
+
+
+    <div v-if="distance.active" style="margin-bottom:2px">
+        <button class="btn btn-sm btn-cancel" @click="distance.active=false">Back</button>
+        <input type="text" v-model="distance.lat1" readonly>
+        <input type="text" v-model="distance.lng1" readonly>
+        <input type="text" v-model="distance.lat2" readonly>
+        <input type="text" v-model="distance.lng2" readonly>
+        <button class="btn btn-sm btn-success" @click="calculateDistance">Calculate</button>
+        <span>{{ distance.distance }}</span>
+    </div>
+
      </div>
         <div class="col-md-12">
             <!-- <small>{{ coords.status }}</small> -->
@@ -106,6 +122,15 @@ export default {
           lng : null,
           formatted_address: 'No Selected Location',
           status : 'Loading map'
+      },
+      distance : {
+          active: false,
+          counter: 1,
+          lat1 : null,
+          lng1 : null,
+          lat2 : null,
+          lng2 : null,
+          distance : 0
       }
     }
   },
@@ -225,14 +250,33 @@ export default {
                 if (places.length == 0) {
                     return;
                 }
-                this.coords.formatted_address = places[0].formatted_address;
-                this.coords.lat = places[0].geometry.location.lat();
-                this.coords.lng = places[0].geometry.location.lng();
+
+                let formatted_address = places[0].formatted_address;
+                let lat = parseFloat(places[0].geometry.location.lat());
+                let lng = parseFloat(places[0].geometry.location.lng());
+
+                if(this.distance.active == true ) {
+                    if(this.distance.counter == 1) {
+                        this.distance.lat1 = lat;
+                        this.distance.lng1 = lng;
+                        $('#pac-input').val('');
+                        this.distance.counter = 2;
+                    } else {
+                        this.distance.lat2 = lat;
+                        this.distance.lng2 = lng;
+                        $('#pac-input').val('');
+                    }
+                }
+                else {
+                    this.coords.formatted_address = formatted_address;
+                    this.coords.lat = lat;
+                    this.coords.lng = lng;
+                }
                 
-                this.map.setCenter({ lat: this.coords.lat, lng: this.coords.lng });
+                this.map.setCenter({ lat: lat , lng: lng });
 
                 new google.maps.Marker({
-                    position: { lat: this.coords.lat, lng: this.coords.lng },
+                    position: { lat: lat, lng: lng },
                     map: this.map,
                     icon: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
                 });
@@ -263,6 +307,28 @@ export default {
         this.coords.lat = null;
         this.coords.lng = null;
         $('#pac-input').val('');
+    },
+
+    calculateDistance() {
+
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true
+        });
+
+        let request = {
+            origin: new google.maps.LatLng(this.distance.lat1, this.distance.lng1),
+            destination: new google.maps.LatLng(this.distance.lat2, this.distance.lng2),
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+
+        let directionsService = new google.maps.DirectionsService();
+        directionsDisplay.setMap(this.map);
+
+        directionsService.route(request, function (response, status) {
+            this.distance.distance = response.routes[0].legs[0].distance.text
+            console.log(response)
+        }.bind(this));
+
     },
 
     waypoints() {
