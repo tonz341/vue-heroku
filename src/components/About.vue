@@ -28,25 +28,17 @@ p {
 
           <div class="col-md-9">
               <p><strong>Name:</strong> Winston James Dale Fale</p>
-              <p><strong>Education:</strong> Bachelor of Science in Information Technology (STI Davao) </p>
+              <p><strong>Education:</strong> Bachelor of Science in Information Technology </p>
               <p><strong>Current:</strong> Developer @ EngageIQ Logic</p>
               <p><strong>Tools:</strong> Laravel, Css, Sass, Php, Mysql, Git, Npm, Javascript, VueJS1, VueJS2, Vuex, VueRouter, Jquery, JqueryUI, JSON, Google API</p>
-              <p><strong>Experimental:</strong> Express, MongoDB, React-Native, SocketIO</p>
+              <p><strong>Basic Knowledge:</strong> Express, MongoDB, React-Native, SocketIO</p>
               <p><strong>External Links: </strong><a href="https://www.onlinejobs.ph/jobseekers/info/214411" target="_blank">OnlineJobs</a>, <a target="_blank" href="https://www.facebook.com/Tonzscifer">Facebook</a>, <a href="https://www.linkedin.com/in/winston-james-dale-fale-66b299141/" target="_blank">LinkedIn</a></p>
               <p><strong>Skype: </strong> winstonfale / engageiqwinston</p>
           </div>
-
-    
         </div>
-
         <hr>
-
-
         <h4>Projects Experience</h4>
-
         <br><br>
-
-
         <div class="row">
           <div class="col-md-2">
             <img src="http://www.thehonestsurvey.com/images/thehonestsurvey-big.png" width="100%" alt="">
@@ -56,7 +48,7 @@ p {
             <p><strong>Description :</strong> A survey platform for US consumers (Successor of Highpayingcashsurveys) </p>
             <p><strong>Technology :</strong> Laravel 5.3 + Jquery + Mysql + VueJs 1</p>
             <p><strong>Role :</strong> Main Web Developer </p>
-            <p><strong>Company</strong>  Engage IQ Logic - (June 2016 - current)</p>
+            <p><strong>Company</strong>  Engage IQ Logic - (March 2017 - January 2018 )</p>
           </div>
         </div>
 
@@ -70,10 +62,9 @@ p {
             <p><strong>Description :</strong> A survey platform for US consumers </p>
             <p><strong>Technology :</strong> Laravel 5.3 + Jquery + Mysql + VueJs 1</p>
             <p><strong>Role :</strong> Main Web Developer </p>
-            <p><strong>Company</strong>  Engage IQ Logic - (June 2016 - current)</p>
+            <p><strong>Company</strong>  Engage IQ Logic - (September 2016 - March 2017)</p>
           </div>
         </div>
-
 
         <hr>
         <div class="row">
@@ -85,12 +76,9 @@ p {
             <p><strong>Description :</strong> Internal application for statistics, graphs, maps, and status of the EngageIQ network  </p>
             <p><strong>Technology :</strong> Laravel 5.2 + Jquery + Mysql + VueJs 1 + Google Api</p>
             <p><strong>Role :</strong> Main Web Developer </p>
-            <p><strong>Company</strong>  Engage IQ Logic - (June 2016 - current)</p>
+            <p><strong>Company</strong>  Engage IQ Logic - (June 2016 - September 2016)</p>
           </div>
         </div>
-
-  
-
 
         <hr>
         <div class="row">
