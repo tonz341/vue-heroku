@@ -1,12 +1,12 @@
 <style scoped>
-#hello {
+/* #hello {
   background-image: linear-gradient(rgba(55, 63, 70, 0.8), rgba(55, 63, 70, 0), rgba(55, 63, 70, 0)), url(https://mdbootstrap.com/img/Photos/Others/city7.jpg);
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: auto 100%;
   padding-bottom: 3rem;
   height: 650px;
-}
+} */
 .center-float{
   position: absolute;
   z-index: 1;
@@ -23,7 +23,7 @@
         <div class="row">
           <div class="col-md-12">
             <!-- <a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo" src="/static/img/logo-s.png"></a> -->
-            <h1 style="color:antiquewhite">Welcome visitor! </h1>
+            <h1 style="color:antiquewhite">Welcome! </h1>
           </div>
         </div>
         <div class="col-md-12">
