@@ -32,7 +32,7 @@ p {
               <p><strong>Current:</strong> Developer @ EngageIQ Logic</p>
               <p><strong>Tools:</strong> Laravel, Css, Sass, Php, Mysql, Git, Npm, Javascript, VueJS1, VueJS2, Vuex, VueRouter, Jquery, JqueryUI, JSON, Google API</p>
               <p><strong>Basic Knowledge:</strong> Express, MongoDB, React-Native, SocketIO</p>
-              <p><strong>External Links: </strong><a href="https://www.onlinejobs.ph/jobseekers/info/214411" target="_blank">OnlineJobs</a>, <a target="_blank" href="https://www.facebook.com/Tonzscifer">Facebook</a>, <a href="https://www.linkedin.com/in/winston-james-dale-fale-66b299141/" target="_blank">LinkedIn</a></p>
+              <p><strong>External Links: </strong><a href="https://www.onlinejobs.ph/jobseekers/info/214411" target="_blank">OnlineJobs</a>, <a target="_blank" href="https://www.facebook.com/Tonzscifer">Facebook</a>, <a href="https://www.linkedin.com/in/winston-james-dale-fale-66b299141/" target="_blank">LinkedIn</a>,  <a href="https://myjobstreet.jobstreet.com.ph/resume/preview-resume.php?x=7s8ketkhkctvmdebl9t6g4f3n7" target="_blank">JobStreet</a></p>
               <p><strong>Skype: </strong> winstonfale / engageiqwinston</p>
           </div>
         </div>

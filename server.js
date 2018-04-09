@@ -72,7 +72,7 @@ db.once('open', function() {
     app.use(bodyParser.json())
 
     app.get('/api/chats/all', (req, res) => {
-      Chat.find().sort({_id:-1}).limit(10).exec(function(err, results){
+      Chat.find().sort({_id:-1}).limit(15).exec(function(err, results){
         res.json(results)
       })
     })

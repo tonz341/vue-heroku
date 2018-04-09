@@ -26,7 +26,7 @@ export default new Router({
       component: Features
     },
     {
-      path: '/about-us',
+      path: '/about',
       name: 'about',
       component: About
     },
@@ -41,7 +41,7 @@ export default new Router({
       component: Team
     },
     {
-      path: '/contact-us',
+      path: '/contacts',
       name: 'contact',
       component: Contact
     },
