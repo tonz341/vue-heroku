@@ -27,11 +27,34 @@ p {
 
 
           <div class="col-md-9">
-              <p><strong>Name:</strong> Winston James Dale Fale</p>
-              <p><strong>Education:</strong> Bachelor of Science in Information Technology </p>
-              <p><strong>Current:</strong> Developer @ EngageIQ Logic</p>
-              <p><strong>Tools:</strong> Laravel, Css, Sass, Php, Mysql, Git, Npm, Javascript, VueJS1, VueJS2, Vuex, VueRouter, Jquery, JqueryUI, JSON, Google API</p>
-              <p><strong>Basic Knowledge:</strong> Express, MongoDB, React-Native, SocketIO</p>
+              <p><strong>Name:</strong> Winston James Dale Lazaga Fale</p>
+              <p><strong>Education:</strong> Bachelor of Science in Information Technology from STI Davao</p>
+              <p><strong>Current Company:</strong>EngageIQ Logic </p>
+              <p><strong>Tools:</strong>
+               <i class="fab fa-laravel"></i> Laravel, 
+               <i class="fab fa-css3"></i> Css, 
+               <i class="fab fa-sass"></i> Sass, 
+               <i class="fab fa-php"></i> Php, 
+               <i class="fas fa-database"></i> Mysql, 
+               <i class="fab fa-js"></i> Javascript, 
+               <i class="fab fa-vuejs"></i> VueJS 1&2, 
+               <i class="fab fa-vuejs"></i> Vuex, 
+               <i class="fab fa-vuejs"></i> VueRouter, <br>
+               <i class="fas fa-dollar-sign"></i>Jquery,
+               <i class="fas fa-dollar-sign"></i>JqueryUI, 
+               <i class="fas fa-code"></i>JSON,
+               <i class="fab fa-connectdevelop"></i>API Website Integration,
+               <i class="fab fa-laravel"></i>Laravel Forge,
+               <i class="fab fa-digital-ocean"></i>Digital Ocean,
+               <i class="fab fa-git"></i>GitBash, 
+               <i class="fab fa-node"></i>Node JS,
+               <i class="fab fa-node-js"></i>Node Express,
+               <i class="fas fa-database"></i>MongoDB, 
+               <i class="fab fa-react"></i>React-Native, 
+               <i class="fas fa-plug"></i>SocketIO,
+               <i class="fab fa-git"></i>Bitbucket,
+               <i class="fab fa-github"></i>Github
+              </p>
               <p><strong>External Links: </strong><a href="https://www.onlinejobs.ph/jobseekers/info/214411" target="_blank">OnlineJobs</a>, <a target="_blank" href="https://www.facebook.com/Tonzscifer">Facebook</a>, <a href="https://www.linkedin.com/in/winston-james-dale-fale-66b299141/" target="_blank">LinkedIn</a>,  <a href="https://myjobstreet.jobstreet.com.ph/resume/preview-resume.php?x=7s8ketkhkctvmdebl9t6g4f3n7" target="_blank">JobStreet</a></p>
               <p><strong>Skype: </strong> winstonfale / engageiqwinston</p>
           </div>
@@ -47,7 +70,7 @@ p {
             <p><strong>Project Name :</strong> <a href="http://www.thehonestsurvey.com/">The Honest Surveys</a></p>
             <p><strong>Description :</strong> A survey platform for US consumers (Successor of Highpayingcashsurveys) </p>
             <p><strong>Technology :</strong> Laravel 5.3 + Jquery + Mysql + VueJs 1</p>
-            <p><strong>Role :</strong> Main Web Developer </p>
+            <p><strong>Role :</strong> Web Developer </p>
             <p><strong>Company</strong>  Engage IQ Logic - (March 2017 - January 2018 )</p>
           </div>
         </div>
@@ -61,7 +84,7 @@ p {
             <p><strong>Project Name :</strong> <a href="http://www.highpayingcashsurveys.com/">HighPaying Cash Surveys</a></p>
             <p><strong>Description :</strong> A survey platform for US consumers </p>
             <p><strong>Technology :</strong> Laravel 5.3 + Jquery + Mysql + VueJs 1</p>
-            <p><strong>Role :</strong> Main Web Developer </p>
+            <p><strong>Role :</strong> Web Developer </p>
             <p><strong>Company</strong>  Engage IQ Logic - (September 2016 - March 2017)</p>
           </div>
         </div>
@@ -75,7 +98,7 @@ p {
             <p><strong>Project Name :</strong> Monitoring System for Engage IQ</a></p>
             <p><strong>Description :</strong> Internal application for statistics, graphs, maps, and status of the EngageIQ network  </p>
             <p><strong>Technology :</strong> Laravel 5.2 + Jquery + Mysql + VueJs 1 + Google Api</p>
-            <p><strong>Role :</strong> Main Web Developer </p>
+            <p><strong>Role :</strong> Web Developer </p>
             <p><strong>Company</strong>  Engage IQ Logic - (June 2016 - September 2016)</p>
           </div>
         </div>
@@ -89,7 +112,7 @@ p {
             <p><strong>Project Name :</strong> <a href="http://http//pushpyns.com">Pushpyns</a></p>
             <p><strong>Description :</strong> Pinning a location of map via google map (with time sechedule) and also ability to share your location information via major social media platforms </p>
             <p><strong>Technology :</strong> Laravel 5.2 + Jquery + Mysql + VueJs 1</p>
-            <p><strong>Role :</strong> Support Web Developer - (freelance - Desktop Version)</p>
+            <p><strong>Role :</strong> Web Developer - (freelance - Desktop Version)</p>
             <p><strong>Company</strong>  Pushpyns Team (Feb 2016 - March 2016)</p>
           </div>
         </div>
@@ -103,7 +126,7 @@ p {
             <p><strong>Project Name :</strong> <a href="http://www.norfolktrailers.co.uk/trailers">Norfolk Trailers</a></p>
             <p><strong>Description :</strong> Showroom for tractors or any mechanical stuff</p>
             <p><strong>Technology :</strong> Laravel 5.1 + Jquery + Mysql</p>
-            <p><strong>Role :</strong> Support Backend Developer (freelance)</p>
+            <p><strong>Role :</strong> Web Developer (freelance)</p>
             <p><strong>Company</strong>  BHW Creative (Nov 2015 - Jan 2016)</p>
           </div>
         </div>
@@ -117,15 +140,10 @@ p {
             <p><strong>Project Name :</strong> Axis Claims </p>
             <p><strong>Description :</strong> Internal Web Application for claiming car accident insurance that has been based from UK</p>
             <p><strong>Technology :</strong> Laravel 5.1 + Jquery + Mysql</p>
-            <p><strong>Role :</strong> Support Developer (freelance)</p>
+            <p><strong>Role :</strong> Web Developer (freelance)</p>
             <p><strong>Company</strong> BHW Creative (Nov 2015 - Jan 2016)</p>
           </div>
         </div>
-
-
-      
-
-
 
 
         <!-- <hr>
