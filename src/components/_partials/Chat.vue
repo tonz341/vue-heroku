@@ -66,7 +66,7 @@ ul {
                   <li class="margin-bot" v-for="message in myMessages" :key="message._id">
                         <vue-letter-avatar name='user' size='35' :rounded='true'/>
                         <div class="chat-message">
-                          <strong>User</strong> : {{ message.message }}
+                          <strong>{{ message.user }}</strong> : {{ message.message }}
                           <p class="chat-date">{{ convertTimestampFromId(message._id) }}</p>
                         </div>
                   </li>
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     sendMessage () {
-      window.socket.emit('global-chat:send-server', this.message)
+      window.socket.emit('global-chat:send-server', {user:'Site_user', message: this.message})
       this.message = null
     },
     convertTimestampFromId (id) {

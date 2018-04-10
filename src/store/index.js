@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.messages = message.reverse()
     },
     INSERT_MESSAGES (state, message) {
-      state.messages.push({'_id': 0, 'user': 'anonymous', 'message': message, 'datetime': new Date()})
+      state.messages.push(message)
     },
     ASSIGN_USER (state, user) {
       state.user = user

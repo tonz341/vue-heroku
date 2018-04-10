@@ -243,10 +243,10 @@ db.once('open', function() {
   
     var io = require('socket.io').listen(server);
     io.on('connection',function (socket) { 
-        socket.on('global-chat:send-server',function(message){ // listner from clients RECEIVER
-            io.emit('global-chat:send-clients',message); // broadcastV SENDER
-            var chats = new Chat({user: 'anonymous' , message: message, datetime: null});
+        socket.on('global-chat:send-server',function(params){ // listner from clients RECEIVER
+            var chats = new Chat({user: params.user , message: params.message, datetime: null});
             chats.save();
+            io.emit('global-chat:send-clients',chats); // broadcastV SENDER
         });
       
         socket.on('disconnect',function(){ // listner from clients when disconnects  // DEFAULT
