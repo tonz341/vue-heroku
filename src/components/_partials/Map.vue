@@ -61,6 +61,11 @@
       #target {
         width: 345px;
       }
+
+      .info-windows{
+        color: violet;
+        font-weight: 600;
+      }
       
     @media only screen and (max-width: 544px) {
          #pac-input {
@@ -144,7 +149,8 @@ export default {
           lng2 : null,
           formatted_address2: null,
           data : []
-      }
+      },
+      markers : []
     }
   },
   computed: {
@@ -174,11 +180,23 @@ export default {
            let coords = response.data;
            for(let i  in coords)
             {
-                new google.maps.Marker({
+                this.markers[i+1] = new google.maps.Marker({
                     position: {lat: parseFloat(coords[i]['lat']), lng: parseFloat(coords[i]['lng'])},
                     map: this.map,
                     animation: google.maps.Animation.DROP,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-pushpin.png'
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/grn-pushpin.png'
+                });
+
+                let infowindow = new google.maps.InfoWindow({
+                    content:  `<span class="info-windows">`+ coords[i]['formatted_address'] +`</span>`
+                });
+
+                this.markers[i+1].addListener('mouseover', () => {
+                    infowindow.open(this.map, this.markers[i+1]);
+                });
+
+                this.markers[i+1].addListener('mouseout', () => {
+                    infowindow.close();
                 });
             }
         }).catch(error => {
@@ -240,13 +258,24 @@ export default {
 
         this.coords.status = "Success";
 
-        new google.maps.Marker({
+        let infowindow = new google.maps.InfoWindow({
+          content:  `<span class="info-windows">Current Home</span>`
+        });
+
+        this.markers[0] = new google.maps.Marker({
             position: position,
             map: this.map,
-            title: 'Home!',
             animation: google.maps.Animation.DROP,
-            icon: 'http://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png'
+            icon: 'http://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png',
         });  
+
+        this.markers[0].addListener('mouseover', () => {
+           infowindow.open(this.map, this.markers[0]);
+        });
+
+        this.markers[0].addListener('mouseout', () => {
+            infowindow.close();
+        });
 
         this.searchArea();
         this.myPins();
