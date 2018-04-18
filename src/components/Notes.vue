@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="notes">
-    <div class="container">
+    <div class="container" v-show="currentUser">
         <div class="row">
           <div class="col-md-4 hidden-sm-down">
             <form @submit.prevent="saveNote">
@@ -117,7 +117,9 @@ export default {
         {id: 7, name: 'Node Express'},
         {id: 8, name: 'Php'},
         {id: 9, name: 'Git'},
-        {id: 10, name: 'Google Api'}
+        {id: 10, name: 'Google Api'},
+        {id: 11, name: 'React-Native'},
+        {id: 99, name: 'Others'},
       ],
       searchWord: null
     }
