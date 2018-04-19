@@ -22,13 +22,13 @@
               <!-- <li class="nav-item">
               <router-link to="/portfolio"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Portfolio</a></router-link>
               </li> -->
-                   <li class="nav-item">
+              <li class="nav-item" v-show="currentUser">
               <router-link to="/notes"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Notes</a></router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-show="currentUser">
               <router-link to="/team"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Team</a></router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" v-show="currentUser">
               <router-link to="/contacts"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">Contact</a></router-link>
               </li>
               <li class="nav-item">
