@@ -5,6 +5,7 @@ var serveStatic = require('serve-static');
 var history = require('connect-history-api-fallback');
 var bodyParser = require("body-parser");
 var session = require('express-session')
+var request = require("request");
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -75,6 +76,21 @@ db.once('open', function() {
       Chat.find().sort({_id:-1}).limit(15).exec(function(err, results){
         res.json(results)
       })
+    })
+
+    app.get('/api/android/news', (req, res) => {
+        // fetch('', { method: 'GET'
+        // }).then((response) => response.json()).then((responseJson) => {
+        //     res.json(responseJson.articles)
+        // }).catch((error) => {
+        //     res.json(error)
+        // });
+
+        request.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=c775ba5c5cdf45bca09b05d77922096a',(err,response,body) => {
+            if(err) { res.send(err) }
+            if(res.statusCode !== 200 ) { res.send(err) }
+            res.send(response)
+        });
     })
     
     app.get('/admin/login', () => {
